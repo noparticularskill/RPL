@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".StudentsCorner">
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="OFFICIAL NEWS OF TELKOM UNIVERSITY"
+        android:textColor="@color/colorAccent"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="37dp"
+        tools:layout_editor_absoluteY="16dp" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/colorAccent"
+        android:text="Latest"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="8sp"
+        tools:layout_editor_absoluteX="18dp"
+        tools:layout_editor_absoluteY="55dp" />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="113dp"
+        android:layout_height="48dp"
+        android:background="@color/colorAccent"
+        android:text="Students Exchange"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="8sp"
+        tools:layout_editor_absoluteX="106dp"
+        tools:layout_editor_absoluteY="55dp" />
+
+    <Button
+        android:id="@+id/button5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/colorAccent"
+        android:text="Scholarship"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="8sp"
+        tools:layout_editor_absoluteX="219dp"
+        tools:layout_editor_absoluteY="55dp" />
+
+    <Button
+        android:id="@+id/button6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/colorAccent"
+        android:text="International"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="8sp"
+        tools:layout_editor_absoluteX="307dp"
+        tools:layout_editor_absoluteY="55dp" />
+</android.support.constraint.ConstraintLayout>
