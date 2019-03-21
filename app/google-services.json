@@ -1,0 +1,71 @@
+{
+  "project_info": {
+    "project_number": "36405614252",
+    "firebase_url": "https://telunewsportal.firebaseio.com",
+    "project_id": "telunewsportal",
+    "storage_bucket": "telunewsportal.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:36405614252:android:dc9699857279d1cd",
+        "android_client_info": {
+          "package_name": "com.example.android.tel_unewsportal"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "36405614252-iq4g6ca7u3gbidlf5p8f6874k3ksiiai.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.android.tel_unewsportal",
+            "certificate_hash": "e34cd56c47608386facaedeaaa2881b1db4e06e8"
+          }
+        },
+        {
+          "client_id": "36405614252-o62n7fqtip83ggh98t3fihsst5h3m2qg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.android.tel_unewsportal",
+            "certificate_hash": "da31ac21bfab806edea90d65ca38b1be7d7d881c"
+          }
+        },
+        {
+          "client_id": "36405614252-2arvl53tv7gpd2a3b48n3rhsntli26qk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.android.tel_unewsportal",
+            "certificate_hash": "183c169018447016e81ce8533e3bbf5503b3b693"
+          }
+        },
+        {
+          "client_id": "36405614252-ddok9hgddn6rd0brlg9ujbt16b9ffcpl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBYMoklmCJpB0O4Rvcj_HCstzHesKqa9Bc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "36405614252-ddok9hgddn6rd0brlg9ujbt16b9ffcpl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
