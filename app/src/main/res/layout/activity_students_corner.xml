@@ -76,7 +76,7 @@
             android:layout_marginRight="18dp"
             android:adjustViewBounds="true"
             android:cropToPadding="true"
-            app:srcCompat="@drawable/Friendhsip" />
+            app:srcCompat="@drawable/friendhsip" />
 
         <TextView
             android:id="@+id/textView4"
@@ -100,7 +100,7 @@
             android:layout_marginTop="120dp"
             android:layout_marginRight="20dp"
             android:cropToPadding="false"
-            app:srcCompat="@drawable/Friendhsip" />
+            app:srcCompat="@drawable/friendhsip" />
 
     </GridLayout>
 </android.support.constraint.ConstraintLayout>
