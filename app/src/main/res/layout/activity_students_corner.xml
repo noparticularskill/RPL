@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="STUDENTS' CORNER OF TELKOM UNIVERSITY"
+        android:text="@string/students_corner_of_telkom_university"
         android:textColor="@color/colorAccent"
         android:textSize="18sp"
         android:textStyle="bold"
@@ -23,53 +23,61 @@
         android:id="@+id/button3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="23dp"
         android:background="@color/colorAccent"
         android:text="Latest"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="8sp"
-        tools:layout_editor_absoluteX="18dp"
-        tools:layout_editor_absoluteY="55dp" />
+        app:layout_constraintEnd_toStartOf="@+id/button4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <Button
         android:id="@+id/button4"
         android:layout_width="113dp"
         android:layout_height="48dp"
+        android:layout_marginTop="23dp"
         android:background="@color/colorAccent"
         android:text="Technology"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="8sp"
-        tools:layout_editor_absoluteX="106dp"
-        tools:layout_editor_absoluteY="55dp" />
+        app:layout_constraintEnd_toStartOf="@+id/button5"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <Button
         android:id="@+id/button5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="17dp"
         android:background="@color/colorAccent"
         android:text="Life Style"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="8sp"
-        tools:layout_editor_absoluteX="219dp"
-        tools:layout_editor_absoluteY="55dp" />
+        app:layout_constraintBottom_toTopOf="@+id/gridLayout"
+        app:layout_constraintEnd_toStartOf="@+id/button6" />
 
     <Button
         android:id="@+id/button6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="17dp"
         android:background="@color/colorAccent"
         android:text="Hobby"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="8sp"
-        tools:layout_editor_absoluteX="307dp"
-        tools:layout_editor_absoluteY="55dp" />
+        app:layout_constraintBottom_toTopOf="@+id/gridLayout"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <GridLayout
+        android:id="@+id/gridLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="611dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent">
 
 
         <ImageView

@@ -37,10 +37,6 @@
             "package_name": "com.example.android.tel_unewsportal",
             "certificate_hash": "183c169018447016e81ce8533e3bbf5503b3b693"
           }
-        },
-        {
-          "client_id": "36405614252-ddok9hgddn6rd0brlg9ujbt16b9ffcpl.apps.googleusercontent.com",
-          "client_type": 3
         }
       ],
       "api_key": [
@@ -49,20 +45,13 @@
         }
       ],
       "services": {
-        "analytics_service": {
-          "status": 1
-        },
         "appinvite_service": {
-          "status": 2,
           "other_platform_oauth_client": [
             {
               "client_id": "36405614252-ddok9hgddn6rd0brlg9ujbt16b9ffcpl.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
-        },
-        "ads_service": {
-          "status": 2
         }
       }
     }
