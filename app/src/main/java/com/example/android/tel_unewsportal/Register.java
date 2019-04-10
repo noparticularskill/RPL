@@ -19,8 +19,8 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class Register extends AppCompatActivity {
     DatabaseReference user = FirebaseDatabase.getInstance().getReference("User");
-    EditText email, username, password, first_name, last_name;
-    String mEmail, mUsername, mPassword, mfirst, mlast;
+    EditText email, username, password;
+    String mEmail, mUsername, mPassword;
 
 
     @Override
@@ -39,8 +39,6 @@ public class Register extends AppCompatActivity {
         email=findViewById(R.id.input_email);
         username=findViewById(R.id.input_confirm);
         password=findViewById(R.id.input_password);
-        first_name=findViewById(R.id.edtFirst);
-        last_name=findViewById(R.id.edtLast);
     }
 
     public void register(View view) {
@@ -48,8 +46,6 @@ public class Register extends AppCompatActivity {
         mEmail = email.getText().toString();
         mPassword = password.getText().toString();
         mUsername = username.getText().toString();
-        mfirst=first_name.getText().toString();
-        mlast=last_name.getText().toString();
 
         if (mUsername.isEmpty()){
             msg("username harus diisi");
@@ -62,12 +58,6 @@ public class Register extends AppCompatActivity {
         if (mPassword.isEmpty()){
             msg("password harus diisi");
             return;
-        }
-        if (mfirst.isEmpty()){
-            msg("first name harus diisi");
-        }
-        if (mlast.isEmpty()){
-            msg("last name harus diisi");
         }
         if (mPassword.length() < 6){
             msg("password minimal 6 karakter");

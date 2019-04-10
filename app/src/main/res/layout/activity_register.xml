@@ -26,7 +26,7 @@
         android:id="@+id/input_email"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="24dp"
         android:drawableLeft="@drawable/ic_email"
         android:ems="10"
         android:hint=" Email"
@@ -39,7 +39,7 @@
         android:id="@+id/input_password"
         android:layout_width="0dp"
         android:layout_height="46dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="24dp"
         android:drawableLeft="@drawable/ic_pass"
         android:ems="10"
         android:hint=" Password"
@@ -52,20 +52,22 @@
         android:id="@+id/input_confirm"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginEnd="16dp"
         android:ems="10"
         android:hint="Username"
         android:inputType="text"
-        app:layout_constraintEnd_toEndOf="@+id/edtLast"
-        app:layout_constraintStart_toStartOf="@+id/edtLast"
-        app:layout_constraintTop_toBottomOf="@+id/edtLast" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/main_title_register" />
 
     <Button
         android:id="@+id/button2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
         android:onClick="register"
         android:text="register"
@@ -74,32 +76,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/input_password"
         tools:ignore="MissingConstraints" />
-
-    <EditText
-        android:id="@+id/edtFirst"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="16dp"
-        android:ems="10"
-        android:hint="First Name"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/main_title_register" />
-
-    <EditText
-        android:id="@+id/edtLast"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        android:hint="Last Name"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="@+id/edtFirst"
-        app:layout_constraintStart_toStartOf="@+id/edtFirst"
-        app:layout_constraintTop_toBottomOf="@+id/edtFirst" />
 
 
 </android.support.constraint.ConstraintLayout>
