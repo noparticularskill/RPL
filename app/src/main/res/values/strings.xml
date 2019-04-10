@@ -1,4 +1,12 @@
 <resources>
     <string name="app_name">Tel-UNewsPortal</string>
     <string name="title">TELKOM UNIVERSITY NEWS PORTAL</string>
+    <string name="tel_u_news_portal">Tel-U News Portal</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="login">LOGIN</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="students_corner_of_telkom_university">STUDENTS\' CORNER OF TELKOM UNIVERSITY</string>
+    <string name="berita">Berita</string>
+
 </resources>

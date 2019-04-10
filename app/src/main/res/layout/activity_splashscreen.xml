@@ -27,7 +27,7 @@
         android:layout_marginTop="120dp"
         android:layout_marginEnd="8dp"
         android:fontFamily="serif"
-        android:text="Tel-U News Portal"
+        android:text="@string/tel_u_news_portal"
         android:textColor="#082859"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
