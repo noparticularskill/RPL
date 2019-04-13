@@ -7,100 +7,73 @@
     tools:context=".StudentsCorner">
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/txtStudCorner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
         android:text="STUDENTS' CORNER OF TELKOM UNIVERSITY"
         android:textColor="@color/colorAccent"
         android:textSize="18sp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="18dp"
-        tools:layout_editor_absoluteY="16dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/btnLatest"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
         android:background="@color/colorAccent"
         android:text="Latest"
-        android:textColor="@color/colorPrimaryDark"
+        android:textColor="@color/colorPrimary"
         android:textSize="8sp"
-        tools:layout_editor_absoluteX="18dp"
-        tools:layout_editor_absoluteY="55dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtStudCorner" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/btnTech"
         android:layout_width="113dp"
         android:layout_height="48dp"
         android:background="@color/colorAccent"
         android:text="Technology"
-        android:textColor="@color/colorPrimaryDark"
+        android:textColor="@color/colorPrimary"
         android:textSize="8sp"
-        tools:layout_editor_absoluteX="106dp"
-        tools:layout_editor_absoluteY="55dp" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/btnLatest"
+        app:layout_constraintStart_toEndOf="@+id/btnLatest" />
 
     <Button
-        android:id="@+id/button5"
+        android:id="@+id/btnLifeStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@color/colorAccent"
         android:text="Life Style"
-        android:textColor="@color/colorPrimaryDark"
+        android:textColor="@color/colorPrimary"
         android:textSize="8sp"
-        tools:layout_editor_absoluteX="219dp"
-        tools:layout_editor_absoluteY="55dp" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/btnTech"
+        app:layout_constraintStart_toEndOf="@+id/btnTech" />
 
     <Button
-        android:id="@+id/button6"
+        android:id="@+id/btnHobby"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
         android:background="@color/colorAccent"
         android:text="Hobby"
-        android:textColor="@color/colorPrimaryDark"
+        android:textColor="@color/colorPrimary"
         android:textSize="8sp"
-        tools:layout_editor_absoluteX="307dp"
-        tools:layout_editor_absoluteY="55dp" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/btnLifeStyle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/btnLifeStyle" />
 
-    <GridLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="419dp"
+        android:layout_height="477dp"
+        tools:layout_editor_absoluteX="-2dp"
+        tools:layout_editor_absoluteY="114dp" />
 
-
-        <ImageView
-            android:id="@+id/imageView3"
-            android:layout_width="177dp"
-            android:layout_height="wrap_content"
-            android:layout_row="0"
-            android:layout_column="2"
-            android:layout_marginTop="120dp"
-            android:layout_marginRight="18dp"
-            android:adjustViewBounds="true"
-            android:cropToPadding="true"
-            app:srcCompat="@drawable/Friendhsip" />
-
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_row="1"
-            android:layout_column="1"
-            android:layout_marginLeft="70dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginBottom="20dp"
-            android:text="TITLE"
-            android:textSize="18sp" />
-
-        <ImageView
-            android:id="@+id/imageView4"
-            android:layout_width="177dp"
-            android:layout_height="116dp"
-            android:layout_row="0"
-            android:layout_column="1"
-            android:layout_marginTop="120dp"
-            android:layout_marginRight="20dp"
-            android:cropToPadding="false"
-            app:srcCompat="@drawable/Friendhsip" />
-
-    </GridLayout>
 </android.support.constraint.ConstraintLayout>
