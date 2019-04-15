@@ -16,13 +16,21 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".CreateNews"></activity>
         <activity android:name=".Register" />
         <activity android:name=".MainActivity" />
         <activity android:name=".Splash" />
         <activity android:name=".splashscreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
+        <activity android:name=".TampilanAwalNM" />
+        <activity android:name=".TampilanAwalMember"></activity>
         <activity android:name=".Login" />
+
     </application>
 
 </manifest>

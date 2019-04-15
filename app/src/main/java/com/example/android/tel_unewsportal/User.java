@@ -1,12 +1,14 @@
 package com.example.android.tel_unewsportal;
 
 public class User {
-    private String email, username, password;
+    private String email, username;
 
-    public User(String email, String username, String password) {
+    public User() {
+    }
+
+    public User(String email, String username) {
         this.email = email;
         this.username = username;
-        this.password = password;
     }
 
     public String getEmail() {
@@ -25,11 +27,4 @@ public class User {
         this.username = username;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
 }

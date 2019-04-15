@@ -7,7 +7,13 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -23,28 +29,54 @@ public class Splash extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
+
+        FirebaseUser mUser = FirebaseAuth.getInstance().getCurrentUser();
+        if (mUser != null){
+            Intent newtask = new Intent(Splash.this, MainActivity.class);
+            newtask.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            newtask.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(newtask);
+        }
+
+        email = findViewById(R.id.input_email);
+        password = findViewById(R.id.input_password);
     }
 
     public void login(View view) {
-        email = findViewById(R.id.input_email);
-        password = findViewById(R.id.input_password);
+        final String getemail = email.getText().toString();
+        final String getpass = password.getText().toString();
 
-        String getemail = email.getText().toString();
-        String getpass = password.getText().toString();
+        if (getemail.isEmpty()){
+            msg("email harus diisi");
+            return;
+        }
+        if (getpass.isEmpty()){
+            msg("password harus diisi");
+            return;
+        }
 
-        Log.d("test",getemail);
-        Log.d("test",getpass);
-
-        user.orderByChild("email").equalTo(getemail).addValueEventListener(new ValueEventListener() {
+        user.orderByChild("username").equalTo(getemail).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                 if(dataSnapshot.exists()){
                     for (DataSnapshot ds : dataSnapshot.getChildren()){
+                        Log.d("GARIDA", "onDataChange: " + ds.toString());
+                        User user = ds.getValue(User.class);
 
-                        if(ds.child("password").getValue(String.class).equals(password.getText().toString())){
-                            Intent login = new Intent(Splash.this, MainActivity.class);
-                            startActivity(login);
+                        assert user != null;
+                        if(user.getUsername().equals(getemail)){
+                            FirebaseAuth.getInstance().signInWithEmailAndPassword(user.getEmail(), getpass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                                @Override
+                                public void onComplete(@NonNull Task<AuthResult> task) {
+                                    if (task.isSuccessful()){
+                                        Intent login = new Intent(Splash.this, MainActivity.class);
+                                        login.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                        login.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                        startActivity(login);
+                                    }
+                                }
+                            });
                         }
                     }
                 }else {
@@ -64,6 +96,10 @@ public class Splash extends AppCompatActivity {
     public void register(View view) {
         Intent register = new Intent(this, Register.class);
         startActivity(register);
+    }
+
+    private void msg(String msg){
+        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
     }
 }
 
