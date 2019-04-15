@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         rvBerita.setAdapter(adapterberita);
 
         for (int i = 0; i<5;i++){
-            mList.add(new Modelberita("Design",R.drawable.friendhsip,"Design of think"));
+            mList.add(new Modelberita("Design",R.drawable.friendship,"Design of think"));
         }
     }
 
