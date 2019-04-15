@@ -48,7 +48,7 @@
         android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView9"
-        app:srcCompat="@drawable/friendhsip" />
+        app:srcCompat="@drawable/friendship" />
 
     <TextView
         android:id="@+id/textView9"
@@ -101,7 +101,7 @@
         app:layout_constraintEnd_toEndOf="parent"
 
         app:layout_constraintTop_toBottomOf="@+id/imageView11"
-        app:srcCompat="@drawable/friendhsip" />
+        app:srcCompat="@drawable/friendship" />
 
     <Button
         android:id="@+id/button7"
