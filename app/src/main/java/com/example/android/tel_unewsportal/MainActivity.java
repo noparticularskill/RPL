@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         rvBerita = findViewById(R.id.rv_berita);
         rvBerita.setLayoutManager(new LinearLayoutManager(this));
         rvBerita.setHasFixedSize(true);
-        adapterberita = new Adapterberita(mList);
+        adapterberita = new Adapterberita(mList, this);
         rvBerita.setAdapter(adapterberita);
 
         for (int i = 0; i<5;i++){
@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
         newtask.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         switch (item.getItemId()){
             case R.id.editt:
-                //todo
+                startActivity(new Intent(this, CreateNews.class));
                 return true;
             case R.id.logout_registerr:
                 FirebaseAuth.getInstance().signOut();

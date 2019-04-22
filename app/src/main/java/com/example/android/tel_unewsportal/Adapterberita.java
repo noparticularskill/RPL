@@ -1,7 +1,9 @@
 package com.example.android.tel_unewsportal;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.RecyclerView;
 import android.view.Display;
 import android.view.LayoutInflater;
@@ -14,9 +16,11 @@ import java.util.List;
 
 public class Adapterberita extends RecyclerView.Adapter<Adapterberita.Myviewholder> {
     List <Modelberita> modelberitaa;
+    Context context;
 
-    public Adapterberita(List<Modelberita> modelberitaa) {
+    public Adapterberita(List<Modelberita> modelberitaa, Context context) {
         this.modelberitaa = modelberitaa;
+        this.context = context;
     }
 
     @NonNull
@@ -31,6 +35,12 @@ public class Adapterberita extends RecyclerView.Adapter<Adapterberita.Myviewhold
         myviewholder.tampilanevent.setText(modelberitaaa.judul);
         myviewholder.gambar.setImageResource(modelberitaaa.gambar);
         myviewholder.berita.setText(modelberitaaa.berita);
+        myviewholder.mcons1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                context.startActivity(new Intent(context, CreateNews.class));
+            }
+        });
     }
 
     @Override
@@ -42,11 +52,13 @@ public class Adapterberita extends RecyclerView.Adapter<Adapterberita.Myviewhold
         TextView tampilanevent;
         ImageView gambar;
         TextView berita;
+        ConstraintLayout mcons1;
         public Myviewholder(@NonNull View itemView) {
             super(itemView);
             tampilanevent = itemView.findViewById(R.id.textView6);
             gambar = itemView.findViewById(R.id.imageView2);
             berita = itemView.findViewById(R.id.textView5);
+            mcons1 = itemView.findViewById(R.id.cons1);
         }
     }
 }
