@@ -42,7 +42,9 @@ public class MainActivity extends AppCompatActivity {
         rvBerita.setAdapter(adapterberita);
 
         for (int i = 0; i<5;i++){
-            mList.add(new Modelberita("Design",R.drawable.friendship,"Design of think"));
+            mList.add(new Modelberita("Design",
+                    "https://arbordayblog.org/wp-content/uploads/2018/06/oak-tree-sunset-iStock-477164218-1080x608.jpg",
+                    "Design of think","Rl.Stine"));
         }
     }
 

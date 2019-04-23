@@ -3,43 +3,69 @@ package com.example.android.tel_unewsportal;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
+import android.net.Uri;
+import android.provider.MediaStore;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class CreateNews extends AppCompatActivity {
-    Button mbutonAdd;
+    Button mbutonPost, mAdd;
     EditText mtitle, mcontent, mauthor;
+    ImageView getImg;
     FirebaseAuth mAuth;
     FirebaseDatabase mDatabase;
+    private static final int REQUEST_GET_SINGLE_FILE = 1;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_news);
-        mbutonAdd = findViewById(R.id.button);
+        mbutonPost = findViewById(R.id.button);
         mtitle = findViewById(R.id.et_title);
         mcontent = findViewById(R.id.et_content);
         mauthor = findViewById(R.id.et_author);
         mAuth = FirebaseAuth.getInstance();
+        mDatabase= FirebaseDatabase.getInstance();
+        mAdd= findViewById(R.id.btnAdd);
+        getImg = findViewById(R.id.image);
 
-        mbutonAdd.setOnClickListener(new View.OnClickListener() {
+        mAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+                intent.addCategory(Intent.CATEGORY_OPENABLE);
+                intent.setType("image/*");
+                startActivityForResult(Intent.createChooser(intent, "Select Picture"),
+                        REQUEST_GET_SINGLE_FILE);
+
+            }
+        });
+
+
+
+        mbutonPost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -49,11 +75,56 @@ public class CreateNews extends AppCompatActivity {
                 content = mcontent.getText().toString().trim();
                 author = mauthor.getText().toString().trim();
 
+                if (title.isEmpty()){
+                    pesan("Title harus diisi");
+                    return;
+                }
+                if (author.isEmpty()){
+                    pesan("Author harus diisi");
+                    return;
+                }
+                if (content.isEmpty()){
+                    pesan("Deskripsi harus diisi");
+                    return;
+                }
 
+                DatabaseReference dbnews = mDatabase.getReference().child("Student News");
+                Modelberita mb = new Modelberita(title,"",content,author);
+                dbnews.setValue(mb).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()){
+                            Toast.makeText(CreateNews.this, "bacot", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(CreateNews.this, MainActivity.class));
+                            finish();
+                        }
+                    }
+                });
 
             }
         });
 
+    }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        if (requestCode == REQUEST_GET_SINGLE_FILE && resultCode == RESULT_OK){
+            if (data != null){
+                Uri uri = data.getData();
+                try {
+                    Bitmap imageBitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), uri);
+                    getImg.setImageBitmap(imageBitmap);
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+
+            }
+        }
+    }
+
+    private void pesan(String msg){
+        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
     }
 }

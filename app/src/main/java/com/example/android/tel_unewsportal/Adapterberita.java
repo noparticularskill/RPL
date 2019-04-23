@@ -33,7 +33,6 @@ public class Adapterberita extends RecyclerView.Adapter<Adapterberita.Myviewhold
     public void onBindViewHolder(@NonNull Myviewholder myviewholder, int i) {
         Modelberita modelberitaaa = modelberitaa.get(i);
         myviewholder.tampilanevent.setText(modelberitaaa.judul);
-        myviewholder.gambar.setImageResource(modelberitaaa.gambar);
         myviewholder.berita.setText(modelberitaaa.berita);
         myviewholder.mcons1.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -2,13 +2,18 @@ package com.example.android.tel_unewsportal;
 
 public class Modelberita {
     String judul;
-    int gambar;
+    String gambar;
     String berita;
+    String author;
 
-    public Modelberita(String judul, int gambar, String berita) {
+    public Modelberita() {
+    }
+
+    public Modelberita(String judul, String gambar, String berita, String author) {
         this.judul = judul;
         this.gambar = gambar;
         this.berita = berita;
+        this.author = author;
     }
 
     public String getJudul() {
@@ -19,11 +24,11 @@ public class Modelberita {
         this.judul = judul;
     }
 
-    public int getGambar() {
+    public String getGambar() {
         return gambar;
     }
 
-    public void setGambar(int gambar) {
+    public void setGambar(String gambar) {
         this.gambar = gambar;
     }
 
@@ -33,5 +38,13 @@ public class Modelberita {
 
     public void setBerita(String berita) {
         this.berita = berita;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
     }
 }
