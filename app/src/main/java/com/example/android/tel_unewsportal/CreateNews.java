@@ -24,7 +24,7 @@ import java.util.Date;
 
 public class CreateNews extends AppCompatActivity {
     Button mbutonAdd;
-    EditText mtitle, mcontent;
+    EditText mtitle, mcontent, mauthor;
     FirebaseAuth mAuth;
     FirebaseDatabase mDatabase;
 
@@ -33,34 +33,23 @@ public class CreateNews extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_news);
-        mbutonAdd = findViewById(R.id.btnAdd);
+        mbutonAdd = findViewById(R.id.button);
         mtitle = findViewById(R.id.et_title);
         mcontent = findViewById(R.id.et_content);
+        mauthor = findViewById(R.id.et_author);
         mAuth = FirebaseAuth.getInstance();
 
         mbutonAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                String title, content;
+                String title,author, content;
 
                 title = mtitle.getText().toString().trim();
                 content = mcontent.getText().toString().trim();
+                author = mauthor.getText().toString().trim();
 
-                mAuth.signInWithEmailAndPassword(title, content)
-                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                if (task.isSuccessful()) {
 
-                                    Toast.makeText(CreateNews.this, "Berhasil ditambahkan", Toast.LENGTH_SHORT).show();
-                                    startActivity(new Intent(CreateNews.this, MainActivity.class));
-                                    finish();
-                                } else {
-                                    Toast.makeText(CreateNews.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                                }
-                            }
-                        });
 
             }
         });

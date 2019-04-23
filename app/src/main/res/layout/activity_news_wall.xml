@@ -6,4 +6,80 @@
     android:layout_height="match_parent"
     tools:context=".NewsWall">
 
+    <TextView
+        android:id="@+id/txtNewsWall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="NEW'S WALL OF TELKOM UNIVERSITY"
+        android:textColor="#00BCD4"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnLatest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:background="#00BCD4"
+        android:text="Latest"
+        android:textColor="@color/colorPrimary"
+        android:textSize="8sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtNewsWall" />
+
+    <Button
+        android:id="@+id/btnTech"
+        android:layout_width="113dp"
+        android:layout_height="48dp"
+        android:background="#00BCD4"
+        android:text="Technology"
+        android:textColor="@color/colorPrimary"
+        android:textSize="8sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/btnLatest"
+        app:layout_constraintStart_toEndOf="@+id/btnLatest" />
+
+    <Button
+        android:id="@+id/btnLifeStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#00BCD4"
+        android:text="Life Style"
+        android:textColor="@color/colorPrimary"
+        android:textSize="8sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/btnTech"
+        app:layout_constraintStart_toEndOf="@+id/btnTech" />
+
+    <Button
+        android:id="@+id/btnHobby"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:background="#00BCD4"
+        android:text="Hobby"
+        android:textColor="@color/colorPrimary"
+        android:textSize="8sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/btnLifeStyle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/btnLifeStyle" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_newswall"
+        android:layout_width="375dp"
+        android:layout_height="482dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/btnHobby"
+        app:layout_constraintStart_toStartOf="@+id/btnLatest"
+        app:layout_constraintTop_toBottomOf="@+id/btnTech" />
+
 </android.support.constraint.ConstraintLayout>

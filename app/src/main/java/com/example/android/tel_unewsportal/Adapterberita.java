@@ -38,7 +38,7 @@ public class Adapterberita extends RecyclerView.Adapter<Adapterberita.Myviewhold
         myviewholder.mcons1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                context.startActivity(new Intent(context, CreateNews.class));
+                context.startActivity(new Intent(context, NewsWall.class));
             }
         });
     }
