@@ -1,6 +1,7 @@
 package com.example.android.tel_unewsportal;
 
 public class Modelberita {
+    String uid;
     String judul;
     String gambar;
     String berita;
@@ -9,7 +10,8 @@ public class Modelberita {
     public Modelberita() {
     }
 
-    public Modelberita(String judul, String gambar, String berita, String author) {
+    public Modelberita(String uid, String judul, String gambar, String berita, String author) {
+        this.uid = uid;
         this.judul = judul;
         this.gambar = gambar;
         this.berita = berita;
@@ -46,5 +48,13 @@ public class Modelberita {
 
     public void setAuthor(String author) {
         this.author = author;
+    }
+
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
     }
 }

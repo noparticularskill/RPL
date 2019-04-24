@@ -1,6 +1,8 @@
 package com.example.android.tel_unewsportal;
 
 import android.content.Intent;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -11,6 +13,12 @@ import android.view.MenuItem;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,8 +27,9 @@ public class MainActivity extends AppCompatActivity {
 
     FirebaseUser mUser = FirebaseAuth.getInstance().getCurrentUser();
     List<Modelberita> mList;
-    Adapterberita adapterberita;
-    RecyclerView rvBerita;
+    List<Modelberita> brtList;
+    Adapterberita adapterberita, adapterStudent;
+    RecyclerView rvBerita, rvStudent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,16 +45,36 @@ public class MainActivity extends AppCompatActivity {
 
         mList = new ArrayList<>();
         rvBerita = findViewById(R.id.rv_berita);
+        rvStudent = findViewById(R.id.recyclerView);
         rvBerita.setLayoutManager(new LinearLayoutManager(this));
         rvBerita.setHasFixedSize(true);
         adapterberita = new Adapterberita(mList, this);
         rvBerita.setAdapter(adapterberita);
 
-        for (int i = 0; i<5;i++){
-            mList.add(new Modelberita("Design",
-                    "https://arbordayblog.org/wp-content/uploads/2018/06/oak-tree-sunset-iStock-477164218-1080x608.jpg",
-                    "Design of think","Rl.Stine"));
-        }
+        brtList = new ArrayList<>();
+        rvStudent.setLayoutManager(new LinearLayoutManager(this, 0, false));
+        rvStudent.setHasFixedSize(true);
+        adapterStudent = new Adapterberita(brtList, this);
+        rvStudent.setAdapter(adapterStudent);
+
+        DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference().child("Student News");
+        mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()){
+                    Modelberita modelberita = dataSnapshot.getValue(Modelberita.class);
+                    mList.add(modelberita);
+                    brtList.add(modelberita);
+                    adapterberita.notifyDataSetChanged();
+                    adapterStudent.notifyDataSetChanged();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 
     @Override

@@ -24,7 +24,11 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -35,6 +39,8 @@ public class CreateNews extends AppCompatActivity {
     ImageView getImg;
     FirebaseAuth mAuth;
     FirebaseDatabase mDatabase;
+    byte[] bit;
+    private String mantul;
     private static final int REQUEST_GET_SINGLE_FILE = 1;
 
 
@@ -69,8 +75,9 @@ public class CreateNews extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                String title,author, content;
+                final String title,author, content;
 
+                mantul = "";
                 title = mtitle.getText().toString().trim();
                 content = mcontent.getText().toString().trim();
                 author = mauthor.getText().toString().trim();
@@ -88,18 +95,50 @@ public class CreateNews extends AppCompatActivity {
                     return;
                 }
 
-                DatabaseReference dbnews = mDatabase.getReference().child("Student News");
-                Modelberita mb = new Modelberita(title,"",content,author);
-                dbnews.setValue(mb).addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful()){
-                            Toast.makeText(CreateNews.this, "bacot", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(CreateNews.this, MainActivity.class));
-                            finish();
+                if (bit != null){
+                    final StorageReference ref = FirebaseStorage.getInstance().getReference().child(FirebaseAuth.getInstance().getCurrentUser().getUid()+""+System.currentTimeMillis());
+                    ref.putBytes(bit).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
+                            if (task.isSuccessful()){
+                                ref.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                    @Override
+                                    public void onSuccess(Uri uri) {
+                                        mantul = uri.toString();
+
+                                        DatabaseReference dbnews = mDatabase.getReference().child("Student News").push();
+                                        Modelberita mb = new Modelberita(dbnews.getKey(),title,mantul,content,author);
+
+                                        dbnews.setValue(mb).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<Void> task) {
+                                                if (task.isSuccessful()){
+                                                    Toast.makeText(CreateNews.this, "bacot", Toast.LENGTH_SHORT).show();
+                                                    startActivity(new Intent(CreateNews.this, MainActivity.class));
+                                                    finish();
+                                                }
+                                            }
+                                        });
+                                    }
+                                });
+                            }
                         }
-                    }
-                });
+                    });
+                }else{
+                    DatabaseReference dbnews = mDatabase.getReference().child("Student News").push();
+                    Modelberita mb = new Modelberita(dbnews.getKey(),title,"",content,author);
+
+                    dbnews.setValue(mb).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if (task.isSuccessful()){
+                                Toast.makeText(CreateNews.this, "bacot", Toast.LENGTH_SHORT).show();
+                                startActivity(new Intent(CreateNews.this, MainActivity.class));
+                                finish();
+                            }
+                        }
+                    });
+                }
 
             }
         });
@@ -114,7 +153,9 @@ public class CreateNews extends AppCompatActivity {
                 try {
                     Bitmap imageBitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), uri);
                     getImg.setImageBitmap(imageBitmap);
-
+                    ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                    imageBitmap.compress(Bitmap.CompressFormat.JPEG, 90, baos);
+                    bit = baos.toByteArray();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
