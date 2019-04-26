@@ -113,7 +113,7 @@ public class CreateNews extends AppCompatActivity {
                                             @Override
                                             public void onComplete(@NonNull Task<Void> task) {
                                                 if (task.isSuccessful()){
-                                                    Toast.makeText(CreateNews.this, "bacot", Toast.LENGTH_SHORT).show();
+                                                    Toast.makeText(CreateNews.this, "Posted", Toast.LENGTH_SHORT).show();
                                                     startActivity(new Intent(CreateNews.this, MainActivity.class));
                                                     finish();
                                                 }
@@ -132,7 +132,7 @@ public class CreateNews extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             if (task.isSuccessful()){
-                                Toast.makeText(CreateNews.this, "bacot", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(CreateNews.this, "Posted", Toast.LENGTH_SHORT).show();
                                 startActivity(new Intent(CreateNews.this, MainActivity.class));
                                 finish();
                             }
