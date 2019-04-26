@@ -13,7 +13,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:text="NEW'S WALL OF TELKOM UNIVERSITY"
+        android:text="NEWS WALL OF TELKOM UNIVERSITY"
         android:textColor="@color/colorAccent"
         android:textSize="18sp"
         android:textStyle="bold"
