@@ -21,6 +21,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -30,6 +31,8 @@ public class MainActivity extends AppCompatActivity {
     List<Modelberita> brtList;
     Adapterberita adapterberita, adapterStudent;
     RecyclerView rvBerita, rvStudent;
+
+    HashMap<String, Modelberita> beritaMap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,14 +60,14 @@ public class MainActivity extends AppCompatActivity {
         adapterStudent = new Adapterberita(brtList, this);
         rvStudent.setAdapter(adapterStudent);
 
-        DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference().child("Student News");
-        mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+        DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("/Student News");
+        mDatabase.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()){
                     Modelberita modelberita = dataSnapshot.getValue(Modelberita.class);
-                    mList.add(modelberita);
                     brtList.add(modelberita);
+                    mList.add(modelberita);
                     adapterberita.notifyDataSetChanged();
                     adapterStudent.notifyDataSetChanged();
                 }

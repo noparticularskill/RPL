@@ -106,7 +106,7 @@ public class CreateNews extends AppCompatActivity {
                                     public void onSuccess(Uri uri) {
                                         mantul = uri.toString();
 
-                                        DatabaseReference dbnews = mDatabase.getReference().child("Student News").push();
+                                        DatabaseReference dbnews = mDatabase.getReference("Student News").push();
                                         Modelberita mb = new Modelberita(dbnews.getKey(),title,mantul,content,author);
 
                                         dbnews.setValue(mb).addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -125,7 +125,7 @@ public class CreateNews extends AppCompatActivity {
                         }
                     });
                 }else{
-                    DatabaseReference dbnews = mDatabase.getReference().child("Student News").push();
+                    DatabaseReference dbnews = mDatabase.getReference("Student News").push();
                     Modelberita mb = new Modelberita(dbnews.getKey(),title,"",content,author);
 
                     dbnews.setValue(mb).addOnCompleteListener(new OnCompleteListener<Void>() {

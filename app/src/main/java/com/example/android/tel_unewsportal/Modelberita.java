@@ -1,6 +1,7 @@
 package com.example.android.tel_unewsportal;
 
 public class Modelberita {
+
     String uid;
     String judul;
     String gambar;

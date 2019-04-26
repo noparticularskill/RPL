@@ -29,7 +29,7 @@
         android:layout_marginTop="8dp"
         android:background="@color/colorAccent"
         android:text="Latest"
-        android:textColor="@color/colorPrimary"
+        android:textColor="@android:color/white"
         android:textSize="8sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtNewsWall" />
@@ -40,7 +40,7 @@
         android:layout_height="48dp"
         android:background="@color/colorAccent"
         android:text="Technology"
-        android:textColor="@color/colorPrimary"
+        android:textColor="@android:color/white"
         android:textSize="8sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/btnLatest"
         app:layout_constraintStart_toEndOf="@+id/btnLatest" />
@@ -51,7 +51,7 @@
         android:layout_height="wrap_content"
         android:background="@color/colorAccent"
         android:text="Life Style"
-        android:textColor="@color/colorPrimary"
+        android:textColor="@android:color/white"
         android:textSize="8sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/btnTech"
         app:layout_constraintStart_toEndOf="@+id/btnTech" />
@@ -63,7 +63,7 @@
         android:layout_marginEnd="8dp"
         android:background="@color/colorAccent"
         android:text="Hobby"
-        android:textColor="@color/colorPrimary"
+        android:textColor="@android:color/white"
         android:textSize="8sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/btnLifeStyle"
         app:layout_constraintEnd_toEndOf="parent"
