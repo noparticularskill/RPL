@@ -10,6 +10,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -32,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
     Adapterberita adapterberita, adapterStudent;
     RecyclerView rvBerita, rvStudent;
 
+
     HashMap<String, Modelberita> beritaMap;
 
     @Override
@@ -49,6 +53,9 @@ public class MainActivity extends AppCompatActivity {
         mList = new ArrayList<>();
         rvBerita = findViewById(R.id.rv_berita);
         rvStudent = findViewById(R.id.recyclerView);
+
+        Button more =findViewById(R.id.bt_more);
+
         rvBerita.setLayoutManager(new LinearLayoutManager(this));
         rvBerita.setHasFixedSize(true);
         adapterberita = new Adapterberita(mList, this);
@@ -59,6 +66,14 @@ public class MainActivity extends AppCompatActivity {
         rvStudent.setHasFixedSize(true);
         adapterStudent = new Adapterberita(brtList, this);
         rvStudent.setAdapter(adapterStudent);
+
+        more.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, NewsWall.class));
+
+            }
+        });
 
         DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("/Student News");
         mDatabase.addValueEventListener(new ValueEventListener() {
