@@ -9,4 +9,7 @@
     <string name="students_corner_of_telkom_university">STUDENTS\' CORNER OF TELKOM UNIVERSITY</string>
     <string name="berita">Berita</string>
 
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>
