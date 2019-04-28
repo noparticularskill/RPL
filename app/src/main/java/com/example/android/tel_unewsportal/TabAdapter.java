@@ -21,7 +21,6 @@ public class TabAdapter extends FragmentStatePagerAdapter {
             case 2: return new TabLife();
             default: return null;
         }
-
     }
 
     @Override

@@ -6,7 +6,6 @@ xmlns:tools="http://schemas.android.com/tools"
 android:id="@+id/activity_main"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
-android:padding="16dp"
 tools:context=".NewsWall">
 
 
@@ -15,7 +14,7 @@ tools:context=".NewsWall">
     android:id="@+id/tab_layout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#03A9F4"
+    android:background="@color/colorPrimaryDark"
     android:minHeight="?attr/actionBarSize"
     android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
 

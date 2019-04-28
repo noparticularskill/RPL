@@ -1,5 +1,7 @@
 package com.example.android.tel_unewsportal;
 
+import android.support.design.widget.TabLayout;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
@@ -10,25 +12,45 @@ import java.util.List;
 
 public class StudentsCorner extends AppCompatActivity {
 
-    RecyclerView rv_stud;
-    List<ItemModel> mList;
-    AdapterRV adapterRV;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_students_corner);
 
-        rv_stud = findViewById(R.id.rv_studentscorner);
+        //android.support.v7.widget.Toolbar toolbar = findViewById(R.id.toolbar);
+        //setSupportActionBar(toolbar);
 
-        mList = new ArrayList<>();
+        TabLayout tabLayout = findViewById(R.id.tab_layout);
+        // Set the text for each tab.
+        tabLayout.addTab(tabLayout.newTab().setText("LATEST"));
+        tabLayout.addTab(tabLayout.newTab().setText("TECHNOLOGY"));
+        tabLayout.addTab(tabLayout.newTab().setText("LIFE"));
 
-        rv_stud.setLayoutManager(new GridLayoutManager(this, 2));
-        adapterRV = new AdapterRV(mList);
-        rv_stud.setAdapter(adapterRV);
+        tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
-        for (int i = 0; i < 4; i++) {
-            mList.add(new ItemModel(R.drawable.friendship, R.drawable.nas, "Tips & Trick", "Inas Muthia", "Contributor", "Sabtu, 13/04/2019"));
-        }
+        final ViewPager viewPager = findViewById(R.id.pager);
+        final TabAdapter adapter = new TabAdapter
+                (getSupportFragmentManager(), tabLayout.getTabCount());
+        viewPager.setAdapter(adapter);
+
+        viewPager.addOnPageChangeListener(new
+                TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+        tabLayout.addOnTabSelectedListener(
+                new TabLayout.OnTabSelectedListener() {
+                    @Override
+                    public void onTabSelected(TabLayout.Tab tab) {
+                        viewPager.setCurrentItem(tab.getPosition());
+                    }
+
+                    @Override
+                    public void onTabUnselected(TabLayout.Tab tab) {
+                    }
+
+                    @Override
+                    public void onTabReselected(TabLayout.Tab tab) {
+                    }
+                });
+
     }
 }
