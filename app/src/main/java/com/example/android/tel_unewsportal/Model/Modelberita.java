@@ -10,6 +10,7 @@ public class Modelberita {
     public String mogimogi;
     public Long mogumogu;
 
+
     public Modelberita() {
     }
 
