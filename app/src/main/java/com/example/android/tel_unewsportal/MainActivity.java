@@ -123,6 +123,9 @@ public class MainActivity extends AppCompatActivity {
             case R.id.editt:
                 startActivity(new Intent(this, CreateNews.class));
                 return true;
+            case R.id.aboutus:
+                startActivity(new Intent(this, AboutUs.class));
+                return true;
             case R.id.logout_registerr:
                 FirebaseAuth.getInstance().signOut();
                 startActivity(newtask);

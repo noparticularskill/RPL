@@ -8,8 +8,14 @@
         app:showAsAction="never" />
 
     <item
+        android:id="@+id/aboutus"
+        android:icon="@drawable/ic_edit_black_24dp"
+        android:title="About Us"
+        app:showAsAction="never" />
+
+    <item
         android:id="@+id/logout_registerr"
-        android:title="logout"
+        android:title="Logout"
         app:showAsAction="never" />
 
 </menu>
