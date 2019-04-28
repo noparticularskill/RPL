@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.android.tel_unewsportal.Model.ItemModel;
+
 import java.util.List;
 
 public class AdapterRV extends RecyclerView.Adapter <AdapterRV.MyViewOlder> {

@@ -1,4 +1,4 @@
-package com.example.android.tel_unewsportal;
+package com.example.android.tel_unewsportal.Fragment;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
