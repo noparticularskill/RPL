@@ -7,19 +7,20 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/textView7"
+        android:id="@+id/txtEvent"
         android:layout_width="115dp"
         android:layout_height="38dp"
         android:layout_marginStart="136dp"
         android:layout_marginTop="38dp"
         android:layout_marginEnd="139dp"
         android:text="Event on Campus"
+        android:textColor="@android:color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView6"
+        android:id="@+id/imgevent"
         android:layout_width="234dp"
         android:layout_height="278dp"
         android:layout_marginStart="75dp"
@@ -27,11 +28,11 @@
         android:layout_marginEnd="75dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView7"
+        app:layout_constraintTop_toBottomOf="@+id/txtEvent"
         app:srcCompat="@drawable/poster1" />
 
     <TextView
-        android:id="@+id/textView11"
+        android:id="@+id/txtJoin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="153dp"
@@ -41,6 +42,12 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView6" />
+        app:layout_constraintTop_toBottomOf="@+id/imgevent" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button" />
 
 </android.support.constraint.ConstraintLayout>
