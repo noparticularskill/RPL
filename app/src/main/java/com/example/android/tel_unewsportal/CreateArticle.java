@@ -28,10 +28,10 @@ import com.google.firebase.storage.UploadTask;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
-public class CreateNews extends AppCompatActivity {
-    Button mbutonPost, mAdd;
-    EditText mtitle, mcontent, mauthor;
-    ImageView getImg;
+public class CreateArticle extends AppCompatActivity {
+    Button mbtnPostArticle, mAddArticle;
+    EditText mtitleArticle, mcontentArticle, mauthorArticle;
+    ImageView getImgArticle;
     FirebaseAuth mAuth;
     FirebaseDatabase mDatabase;
     byte[] bit;
@@ -42,19 +42,19 @@ public class CreateNews extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_create_news);
+        setContentView(R.layout.activity_create_article);
         getSupportActionBar().hide();
 
-        mbutonPost = findViewById(R.id.btnPostE);
-        mtitle = findViewById(R.id.titleArticle);
-        mcontent = findViewById(R.id.contentArticle);
-        mauthor = findViewById(R.id.authorArticle);
+        mbtnPostArticle = findViewById(R.id.btnPostE);
+        mtitleArticle = findViewById(R.id.titleArticle);
+        mcontentArticle = findViewById(R.id.contentArticle);
+        mauthorArticle = findViewById(R.id.authorArticle);
         mAuth = FirebaseAuth.getInstance();
         mDatabase= FirebaseDatabase.getInstance();
-        mAdd= findViewById(R.id.btnAdd_Event);
-        getImg = findViewById(R.id.imageE);
+        mAddArticle= findViewById(R.id.btnAdd_Event);
+        getImgArticle = findViewById(R.id.imageE);
 
-        mAdd.setOnClickListener(new View.OnClickListener() {
+        mAddArticle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
@@ -68,16 +68,16 @@ public class CreateNews extends AppCompatActivity {
 
 
 
-        mbutonPost.setOnClickListener(new View.OnClickListener() {
+        mbtnPostArticle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 final String title,author, content;
 
                 mantul = "";
-                title = mtitle.getText().toString().trim();
-                content = mcontent.getText().toString().trim();
-                author = mauthor.getText().toString().trim();
+                title = mtitleArticle.getText().toString().trim();
+                content = mcontentArticle.getText().toString().trim();
+                author = mauthorArticle.getText().toString().trim();
 
                 if (title.isEmpty()){
                     pesan("Title harus diisi");
@@ -103,15 +103,15 @@ public class CreateNews extends AppCompatActivity {
                                     public void onSuccess(Uri uri) {
                                         mantul = uri.toString();
 
-                                        DatabaseReference dbnews = mDatabase.getReference("Student News").push();
+                                        DatabaseReference dbnews = mDatabase.getReference("Article").push();
                                         Modelberita mb = new Modelberita(dbnews.getKey(),title,mantul,content,author, "Belum Lulus Sensor", System.currentTimeMillis());
 
                                         dbnews.setValue(mb).addOnCompleteListener(new OnCompleteListener<Void>() {
                                             @Override
                                             public void onComplete(@NonNull Task<Void> task) {
                                                 if (task.isSuccessful()){
-                                                    Toast.makeText(CreateNews.this, "Posted", Toast.LENGTH_SHORT).show();
-                                                    startActivity(new Intent(CreateNews.this, MainActivity.class));
+                                                    Toast.makeText(CreateArticle.this, "Posted", Toast.LENGTH_SHORT).show();
+                                                    startActivity(new Intent(CreateArticle.this, MainActivity.class));
                                                     finish();
                                                 }
                                             }
@@ -122,15 +122,15 @@ public class CreateNews extends AppCompatActivity {
                         }
                     });
                 }else{
-                    DatabaseReference dbnews = mDatabase.getReference("Student News").push();
+                    DatabaseReference dbnews = mDatabase.getReference("Article").push();
                     Modelberita mb = new Modelberita(dbnews.getKey(),title,"",content,author, "Belum Lulus Sensor", System.currentTimeMillis());
 
                     dbnews.setValue(mb).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             if (task.isSuccessful()){
-                                Toast.makeText(CreateNews.this, "Posted", Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(CreateNews.this, MainActivity.class));
+                                Toast.makeText(CreateArticle.this, "Posted", Toast.LENGTH_SHORT).show();
+                                startActivity(new Intent(CreateArticle.this, MainActivity.class));
                                 finish();
                             }
                         }
@@ -149,7 +149,7 @@ public class CreateNews extends AppCompatActivity {
                 Uri uri = data.getData();
                 try {
                     Bitmap imageBitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), uri);
-                    getImg.setImageBitmap(imageBitmap);
+                    getImgArticle.setImageBitmap(imageBitmap);
                     ByteArrayOutputStream baos = new ByteArrayOutputStream();
                     imageBitmap.compress(Bitmap.CompressFormat.JPEG, 90, baos);
                     bit = baos.toByteArray();
@@ -166,3 +166,4 @@ public class CreateNews extends AppCompatActivity {
         Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
     }
 }
+

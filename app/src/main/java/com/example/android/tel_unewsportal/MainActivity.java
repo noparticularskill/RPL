@@ -140,11 +140,17 @@ public class MainActivity extends AppCompatActivity {
         newtask.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
         newtask.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         switch (item.getItemId()){
-            case R.id.editt:
+            case R.id.news:
                 startActivity(new Intent(this, CreateNews.class));
                 return true;
             case R.id.aboutus:
                 startActivity(new Intent(this, AboutUs.class));
+                return true;
+            case R.id.berita:
+                startActivity(new Intent(this, CreateArticle.class));
+                return true;
+            case R.id.Event:
+                startActivity(new Intent(this, CreateEvent.class));
                 return true;
             case R.id.logout_registerr:
                 FirebaseAuth.getInstance().signOut();
