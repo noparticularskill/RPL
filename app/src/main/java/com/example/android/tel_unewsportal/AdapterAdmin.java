@@ -45,7 +45,7 @@ public class AdapterAdmin extends RecyclerView.Adapter<AdapterAdmin.Myviewholder
         myviewholder.btnAsep.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Modelberita md = new Modelberita(modelberitaaa.uid, modelberitaaa.judul, modelberitaaa.gambar, modelberitaaa.berita, modelberitaaa.author, "Sudah Lulus Sensor");
+                Modelberita md = new Modelberita(modelberitaaa.uid, modelberitaaa.judul, modelberitaaa.gambar, modelberitaaa.berita, modelberitaaa.author, "Sudah Lulus Sensor", System.currentTimeMillis());
                 DatabaseReference a = FirebaseDatabase.getInstance().getReference("Student News").child(modelberitaaa.uid);
                 a.setValue(md).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
@@ -61,7 +61,7 @@ public class AdapterAdmin extends RecyclerView.Adapter<AdapterAdmin.Myviewholder
         myviewholder.btnDelina.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Modelberita md = new Modelberita(modelberitaaa.uid, modelberitaaa.judul, modelberitaaa.gambar, modelberitaaa.berita, modelberitaaa.author, "Tidak Lulus Sensor");
+                Modelberita md = new Modelberita(modelberitaaa.uid, modelberitaaa.judul, modelberitaaa.gambar, modelberitaaa.berita, modelberitaaa.author, "Tidak Lulus Sensor", System.currentTimeMillis());
                 DatabaseReference a = FirebaseDatabase.getInstance().getReference("Student News").child(modelberitaaa.uid);
                 a.setValue(md).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
@@ -82,6 +82,7 @@ public class AdapterAdmin extends RecyclerView.Adapter<AdapterAdmin.Myviewholder
                 i.putExtra("aufar", modelberitaaa.author);
                 i.putExtra("hoax", modelberitaaa.berita);
                 i.putExtra("ambar", modelberitaaa.gambar);
+                i.putExtra("anggal", modelberitaaa.mogumogu);
                 context.startActivity(i);
             }
         });

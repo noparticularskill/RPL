@@ -12,8 +12,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.squareup.picasso.Picasso;
-
 import java.util.List;
 
 public class Adapterberita extends RecyclerView.Adapter<Adapterberita.Myviewholder> {
@@ -36,14 +34,12 @@ public class Adapterberita extends RecyclerView.Adapter<Adapterberita.Myviewhold
         final Modelberita modelberitaaa = modelberitaa.get(i);
         myviewholder.tampilanevent.setText(modelberitaaa.judul);
         myviewholder.berita.setText(modelberitaaa.berita);
-        Picasso.get().load(modelberitaaa.gambar).into(myviewholder.gambar);
         myviewholder.mcons1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent sc = new Intent(context, DetailStudentCorner.class);
                 sc.putExtra("judul", modelberitaaa.judul);
                 sc.putExtra("berita", modelberitaaa.berita);
-                sc.putExtra("gambar", modelberitaaa.gambar);
                 context.startActivity(sc);
             }
         });
