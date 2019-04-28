@@ -9,6 +9,7 @@ public class Modelberita {
     String author;
     public String mogimogi;
 
+
     public Modelberita() {
     }
 
