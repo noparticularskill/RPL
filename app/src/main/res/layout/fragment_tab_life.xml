@@ -3,17 +3,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TabTech">
+    tools:context=".TabLife">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
-        android:layout_width="194dp"
+        android:layout_width="100dp"
         android:layout_height="50dp"
-        android:text="TECHNOLOGY"
+        android:text="LIFE"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv_tech"
+        android:id="@+id/rv_life"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginStart="0dp"
