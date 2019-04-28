@@ -2,12 +2,16 @@ package com.example.android.tel_unewsportal;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class DetailStudentCorner extends AppCompatActivity {
 
@@ -34,6 +38,7 @@ public class DetailStudentCorner extends AppCompatActivity {
             String b = getIntent().getStringExtra("hoax");
             String c = getIntent().getStringExtra("aufar");
             String d = getIntent().getStringExtra("ambar");
+            Long e = getIntent().getLongExtra("anggal", 0);
 
             if (a != null) {
                 tvTitle.setText(a);
@@ -47,6 +52,12 @@ public class DetailStudentCorner extends AppCompatActivity {
             if (d != null) {
                 Picasso.get().load(d).into(Imgstudent);
             }
+
+            Date z = new Date(e);
+            SimpleDateFormat df = new SimpleDateFormat("dd/MMM/yyyy");
+            String x = df.format(z);
+            tvTanggalstudent.setText(x);
+
         }
     }
 }

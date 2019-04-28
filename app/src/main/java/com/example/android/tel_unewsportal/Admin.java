@@ -1,12 +1,17 @@
 package com.example.android.tel_unewsportal;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -72,5 +77,27 @@ public class Admin extends AppCompatActivity {
 
             }
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+
+        inflater.inflate(R.menu.menuadmin,menu);
+
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        Intent newtask = new Intent(Admin.this, Splash.class);
+        newtask.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        newtask.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        switch (item.getItemId()){
+            case R.id.menu_logout:
+                startActivity(newtask);
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

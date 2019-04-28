@@ -37,10 +37,13 @@ public class Adapterberita extends RecyclerView.Adapter<Adapterberita.Myviewhold
         myviewholder.mcons1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent sc = new Intent(context, DetailStudentCorner.class);
-                sc.putExtra("judul", modelberitaaa.judul);
-                sc.putExtra("berita", modelberitaaa.berita);
-                context.startActivity(sc);
+                Intent i = new Intent(context, DetailStudentCorner.class);
+                i.putExtra("julid", modelberitaaa.judul);
+                i.putExtra("aufar", modelberitaaa.author);
+                i.putExtra("hoax", modelberitaaa.berita);
+                i.putExtra("ambar", modelberitaaa.gambar);
+                i.putExtra("anggal", modelberitaaa.mogumogu);
+                context.startActivity(i);
             }
         });
     }

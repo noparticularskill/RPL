@@ -8,17 +8,19 @@ public class Modelberita {
     String berita;
     String author;
     String mogimogi;
+    Long mogumogu;
 
     public Modelberita() {
     }
 
-    public Modelberita(String uid, String judul, String gambar, String berita, String author, String mogimogi) {
+    public Modelberita(String uid, String judul, String gambar, String berita, String author, String mogimogi, Long mogumogu) {
         this.uid = uid;
         this.judul = judul;
         this.gambar = gambar;
         this.berita = berita;
         this.author = author;
         this.mogimogi = mogimogi;
+        this.mogumogu = mogumogu;
     }
 
     public String getJudul() {
@@ -67,5 +69,13 @@ public class Modelberita {
 
     public void setMogimogi(String mogimogi) {
         this.mogimogi = mogimogi;
+    }
+
+    public Long getMogumogu() {
+        return mogumogu;
+    }
+
+    public void setMogumogu(Long mogumogu) {
+        this.mogumogu = mogumogu;
     }
 }
