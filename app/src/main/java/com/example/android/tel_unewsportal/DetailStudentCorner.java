@@ -7,6 +7,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 public class DetailStudentCorner extends AppCompatActivity {
 
     TextView tvTitle, tvTanggalstudent, tvContributorstudent,tvIsicornerstudent;
@@ -19,8 +21,6 @@ public class DetailStudentCorner extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_student_corner);
 
-
-
         tvTitle = findViewById(R.id.titlestudent);
         tvTanggalstudent = findViewById(R.id.tanggalstudent);
         tvContributorstudent = findViewById(R.id.contributorstudent);
@@ -29,6 +29,24 @@ public class DetailStudentCorner extends AppCompatActivity {
         commentstudent = findViewById(R.id.komenstudent);
         Submitstudent = findViewById(R.id.submitstudent);
 
+        if (getIntent() != null){
+            String a = getIntent().getStringExtra("julid");
+            String b = getIntent().getStringExtra("hoax");
+            String c = getIntent().getStringExtra("aufar");
+            String d = getIntent().getStringExtra("ambar");
 
+            if (a != null) {
+                tvTitle.setText(a);
+            }
+            if (b != null) {
+                tvIsicornerstudent.setText(b);
+            }
+            if (c != null) {
+                tvContributorstudent.setText(c);
+            }
+            if (d != null) {
+                Picasso.get().load(d).into(Imgstudent);
+            }
+        }
     }
 }

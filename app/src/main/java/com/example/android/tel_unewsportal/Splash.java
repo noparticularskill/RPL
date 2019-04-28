@@ -55,6 +55,14 @@ public class Splash extends AppCompatActivity {
             return;
         }
 
+        if (getemail.equals("admin") && getpass.equals("admin123")){
+            Intent login = new Intent(Splash.this, Admin.class);
+            login.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            login.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(login);
+            return;
+        }
+
         user.orderByChild("username").equalTo(getemail).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

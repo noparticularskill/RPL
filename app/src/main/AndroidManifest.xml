@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".DetailNews"></activity>
+        <activity android:name=".Admin"></activity>
+        <activity android:name=".DetailNews" />
         <activity android:name=".DetailStudentCorner" />
         <activity android:name=".NewsWall" />
         <activity android:name=".StudentsCorner" />

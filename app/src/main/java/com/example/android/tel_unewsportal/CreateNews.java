@@ -107,7 +107,7 @@ public class CreateNews extends AppCompatActivity {
                                         mantul = uri.toString();
 
                                         DatabaseReference dbnews = mDatabase.getReference("Student News").push();
-                                        Modelberita mb = new Modelberita(dbnews.getKey(),title,mantul,content,author);
+                                        Modelberita mb = new Modelberita(dbnews.getKey(),title,mantul,content,author, "Belum Lulus Sensor");
 
                                         dbnews.setValue(mb).addOnCompleteListener(new OnCompleteListener<Void>() {
                                             @Override
@@ -126,7 +126,7 @@ public class CreateNews extends AppCompatActivity {
                     });
                 }else{
                     DatabaseReference dbnews = mDatabase.getReference("Student News").push();
-                    Modelberita mb = new Modelberita(dbnews.getKey(),title,"",content,author);
+                    Modelberita mb = new Modelberita(dbnews.getKey(),title,"",content,author, "Belum Lulus Sensor");
 
                     dbnews.setValue(mb).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override

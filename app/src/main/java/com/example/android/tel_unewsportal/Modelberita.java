@@ -7,16 +7,18 @@ public class Modelberita {
     String gambar;
     String berita;
     String author;
+    String mogimogi;
 
     public Modelberita() {
     }
 
-    public Modelberita(String uid, String judul, String gambar, String berita, String author) {
+    public Modelberita(String uid, String judul, String gambar, String berita, String author, String mogimogi) {
         this.uid = uid;
         this.judul = judul;
         this.gambar = gambar;
         this.berita = berita;
         this.author = author;
+        this.mogimogi = mogimogi;
     }
 
     public String getJudul() {
@@ -57,5 +59,13 @@ public class Modelberita {
 
     public void setUid(String uid) {
         this.uid = uid;
+    }
+
+    public String getMogimogi() {
+        return mogimogi;
+    }
+
+    public void setMogimogi(String mogimogi) {
+        this.mogimogi = mogimogi;
     }
 }

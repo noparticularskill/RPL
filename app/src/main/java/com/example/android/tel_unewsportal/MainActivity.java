@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        if (mUser == null){
+        if (mUser == null) {
             Intent newtask = new Intent(MainActivity.this, Splash.class);
             newtask.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
             newtask.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -61,16 +61,37 @@ public class MainActivity extends AppCompatActivity {
         rvStudent.setAdapter(adapterStudent);
 
         DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("/Student News");
-        mDatabase.addValueEventListener(new ValueEventListener() {
+        mDatabase.addChildEventListener(new ChildEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (dataSnapshot.exists()){
+            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                if (dataSnapshot.hasChildren()){
                     Modelberita modelberita = dataSnapshot.getValue(Modelberita.class);
-                    brtList.add(modelberita);
-                    mList.add(modelberita);
-                    adapterberita.notifyDataSetChanged();
-                    adapterStudent.notifyDataSetChanged();
+                    if (modelberita != null){
+                        if (modelberita.mogimogi != null){
+                        if (modelberita.mogimogi.equals("Sudah Lulus Sensor")){
+                            brtList.add(modelberita);
+                            mList.add(modelberita);
+                            adapterberita.notifyDataSetChanged();
+                            adapterStudent.notifyDataSetChanged();
+                            }
+                        }
+                    }
                 }
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
             }
 
             @Override
