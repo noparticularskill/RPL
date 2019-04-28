@@ -29,12 +29,7 @@ public class AdapterRV extends RecyclerView.Adapter <AdapterRV.MyViewOlder> {
     @Override
     public void onBindViewHolder(@NonNull MyViewOlder myViewOlder, int i) {
         ItemModel item = mList.get(i);
-        myViewOlder.imgStud.setImageResource(item.imgStud);
-        myViewOlder.imgProf.setImageResource(item.imgProf);
-        myViewOlder.tvJudul.setText(item.judul);
-        myViewOlder.tvPenulis.setText(item.penulis);
-        myViewOlder.tvCont.setText(item.contributor);
-        myViewOlder.tvDate.setText(item.tanggal);
+
     }
 
     @Override

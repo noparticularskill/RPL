@@ -19,7 +19,8 @@
         <activity android:name=".Register" />
         <activity android:name=".MainActivity" />
         <activity android:name=".Splash" />
-        <activity android:name=".AboutUs"/>
+        <activity android:name=".AboutUs"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".splashscreen"
             android:theme="@style/AppTheme.NoActionBar">

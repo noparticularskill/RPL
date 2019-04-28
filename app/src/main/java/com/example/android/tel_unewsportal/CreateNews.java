@@ -48,6 +48,8 @@ public class CreateNews extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_news);
+        getSupportActionBar().hide();
+
         mbutonPost = findViewById(R.id.button);
         mtitle = findViewById(R.id.et_title);
         mcontent = findViewById(R.id.et_content);

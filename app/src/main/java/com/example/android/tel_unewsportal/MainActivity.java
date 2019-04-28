@@ -35,7 +35,6 @@ public class MainActivity extends AppCompatActivity {
     RecyclerView rvBerita, rvStudent;
     TextView whtsnew, studcorner;
 
-    HashMap<String, Modelberita> beritaMap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
         mList = new ArrayList<>();
         rvBerita = findViewById(R.id.rv_berita);
         rvStudent = findViewById(R.id.recyclerView);
+
         rvBerita.setLayoutManager(new LinearLayoutManager(this));
         rvBerita.setHasFixedSize(true);
         adapterberita = new Adapterberita(mList, this);
