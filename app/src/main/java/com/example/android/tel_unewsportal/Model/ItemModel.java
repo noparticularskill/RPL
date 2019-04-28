@@ -1,4 +1,4 @@
-package com.example.android.tel_unewsportal;
+package com.example.android.tel_unewsportal.Model;
 
 public class ItemModel {
     int imgStud, imgProf;
