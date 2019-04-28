@@ -7,7 +7,7 @@ public class Modelberita {
     String gambar;
     String berita;
     String author;
-    String mogimogi;
+    public String mogimogi;
 
     public Modelberita() {
     }
