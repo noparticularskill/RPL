@@ -3,13 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item android:id="@+id/editt"
-        android:title="Create News"
+        android:title="Create Article"
         android:icon="@drawable/ic_edit_black_24dp"
         app:showAsAction="never" />
 
     <item
+        android:id="@+id/aboutus"
+        android:icon="@drawable/ic_edit_black_24dp"
+        android:title="About Us"
+        app:showAsAction="never" />
+
+    <item
         android:id="@+id/logout_registerr"
-        android:title="logout"
+        android:title="Logout"
         app:showAsAction="never" />
 
 </menu>

@@ -10,6 +10,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -31,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
     List<Modelberita> brtList;
     Adapterberita adapterberita, adapterStudent;
     RecyclerView rvBerita, rvStudent;
+    TextView whtsnew, studcorner;
 
     HashMap<String, Modelberita> beritaMap;
 
@@ -46,6 +49,9 @@ public class MainActivity extends AppCompatActivity {
             startActivity(newtask);
         }
 
+        whtsnew = findViewById(R.id.whatsnew);
+        studcorner = findViewById(R.id.studentscorner);
+
         mList = new ArrayList<>();
         rvBerita = findViewById(R.id.rv_berita);
         rvStudent = findViewById(R.id.recyclerView);
@@ -59,6 +65,23 @@ public class MainActivity extends AppCompatActivity {
         rvStudent.setHasFixedSize(true);
         adapterStudent = new Adapterberita(brtList, this);
         rvStudent.setAdapter(adapterStudent);
+
+        whtsnew.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        startActivity(new Intent(MainActivity.this, NewsWall.class));
+                    }
+                });
+
+        studcorner.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        startActivity(new Intent(MainActivity.this, StudentsCorner.class));
+                    }
+                }
+        );
 
         DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("/Student News");
         mDatabase.addChildEventListener(new ChildEventListener() {
@@ -120,6 +143,9 @@ public class MainActivity extends AppCompatActivity {
         switch (item.getItemId()){
             case R.id.editt:
                 startActivity(new Intent(this, CreateNews.class));
+                return true;
+            case R.id.aboutus:
+                startActivity(new Intent(this, AboutUs.class));
                 return true;
             case R.id.logout_registerr:
                 FirebaseAuth.getInstance().signOut();

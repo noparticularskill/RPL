@@ -2,6 +2,7 @@ package com.example.android.tel_unewsportal;
 
 import android.content.Intent;
 import android.os.CountDownTimer;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,22 +13,17 @@ public class splashscreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splashscreen);
+        //getSupportActionBar().hide();
 
 
-        CountDownTimer downTimer = new CountDownTimer(3000, 1000) {
+        final Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
             @Override
-            public void onTick(long millisUntilFinished) {
-
-            }
-
-            @Override
-            public void onFinish() {
-                Intent activity2 = new Intent(splashscreen.this, Splash.class);
-                startActivity(activity2);
+            public void run() {
+                startActivity( new Intent(getApplicationContext(), Splash.class));
                 finish();
             }
-        };
-        downTimer.start();
+        },1000L);
     }
 }
 
