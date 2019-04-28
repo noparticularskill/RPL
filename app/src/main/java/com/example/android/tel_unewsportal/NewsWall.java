@@ -11,6 +11,7 @@ public class NewsWall extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news_wall);
+        getSupportActionBar().setTitle("News Wall");
 
         //android.support.v7.widget.Toolbar toolbar = findViewById(R.id.toolbar);
         //setSupportActionBar(toolbar);
