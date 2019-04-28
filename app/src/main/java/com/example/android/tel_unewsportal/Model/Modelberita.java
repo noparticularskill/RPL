@@ -1,25 +1,27 @@
-package com.example.android.tel_unewsportal;
+package com.example.android.tel_unewsportal.Model;
 
 public class Modelberita {
 
-    String uid;
-    String judul;
-    String gambar;
-    String berita;
-    String author;
+    public String uid;
+    public String judul;
+    public String gambar;
+    public String berita;
+    public String author;
     public String mogimogi;
+    public Long mogumogu;
 
 
     public Modelberita() {
     }
 
-    public Modelberita(String uid, String judul, String gambar, String berita, String author, String mogimogi) {
+    public Modelberita(String uid, String judul, String gambar, String berita, String author, String mogimogi, Long mogumogu) {
         this.uid = uid;
         this.judul = judul;
         this.gambar = gambar;
         this.berita = berita;
         this.author = author;
         this.mogimogi = mogimogi;
+        this.mogumogu = mogumogu;
     }
 
     public String getJudul() {
@@ -68,5 +70,13 @@ public class Modelberita {
 
     public void setMogimogi(String mogimogi) {
         this.mogimogi = mogimogi;
+    }
+
+    public Long getMogumogu() {
+        return mogumogu;
+    }
+
+    public void setMogumogu(Long mogumogu) {
+        this.mogumogu = mogumogu;
     }
 }

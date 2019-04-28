@@ -12,7 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.android.tel_unewsportal.Adapterberita;
-import com.example.android.tel_unewsportal.Modelberita;
+import com.example.android.tel_unewsportal.Model.Modelberita;
 import com.example.android.tel_unewsportal.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
