@@ -39,8 +39,11 @@ public class Adapterberita extends RecyclerView.Adapter<Adapterberita.Myviewhold
             @Override
             public void onClick(View v) {
                 Intent sc = new Intent(context, DetailStudentCorner.class);
-                sc.putExtra("judul", modelberitaaa.judul);
-                sc.putExtra("berita", modelberitaaa.berita);
+                sc.putExtra("julid", modelberitaaa.judul);
+                sc.putExtra("aufar", modelberitaaa.author);
+                sc.putExtra("hoax", modelberitaaa.berita);
+                sc.putExtra("ambar", modelberitaaa.gambar);
+                sc.putExtra("anggal", modelberitaaa.mogumogu);
                 context.startActivity(sc);
             }
         });
