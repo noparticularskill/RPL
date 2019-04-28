@@ -28,7 +28,7 @@ public class StudentsCorner extends AppCompatActivity {
         rv_stud.setAdapter(adapterRV);
 
         for (int i = 0; i < 4; i++) {
-            mList.add(new ItemModel(R.drawable.nas, R.drawable.nas, "Tips & Trick", "Inas Muthia", "Contributor", "Sabtu, 13/04/2019"));
+            mList.add(new ItemModel(R.drawable.friendship, R.drawable.nas, "Tips & Trick", "Inas Muthia", "Contributor", "Sabtu, 13/04/2019"));
         }
     }
 }
