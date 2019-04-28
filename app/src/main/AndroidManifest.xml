@@ -12,7 +12,6 @@
 
         <activity android:name=".Admin" />
         <activity android:name=".DetailNews"></activity>
-        <activity android:name=".Admin"/>
         <activity android:name=".DetailStudentCorner" />
         <activity android:name=".NewsWall" />
         <activity android:name=".StudentsCorner" />

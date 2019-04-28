@@ -30,7 +30,6 @@ public class Splash extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-
         FirebaseUser mUser = FirebaseAuth.getInstance().getCurrentUser();
         if (mUser != null){
             Intent newtask = new Intent(Splash.this, MainActivity.class);

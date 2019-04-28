@@ -12,13 +12,12 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.android.tel_unewsportal.Model.Modelberita;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class AdapterAdmin extends RecyclerView.Adapter<AdapterAdmin.Myviewholder> {
     List<Modelberita> modelberitaa;
