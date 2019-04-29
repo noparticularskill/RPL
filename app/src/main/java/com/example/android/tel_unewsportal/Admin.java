@@ -15,6 +15,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import com.example.android.tel_unewsportal.Model.Modelberita;
+import com.example.android.tel_unewsportal.Model.SettingActivity;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -147,6 +148,11 @@ public class Admin extends AppCompatActivity {
         switch (item.getItemId()){
             case R.id.menu_logout:
                 startActivity(newtask);
+                break;
+            case R.id.menu_setting:
+                Intent intent = new Intent(Admin.this, SettingActivity.class);
+                startActivity(intent);
+                finish();
                 break;
         }
         return super.onOptionsItemSelected(item);
