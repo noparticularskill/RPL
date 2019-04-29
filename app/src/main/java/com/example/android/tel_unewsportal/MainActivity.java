@@ -35,7 +35,8 @@ public class MainActivity extends AppCompatActivity {
     Adapterberita adapterberita;
     AdapterArtikel adapterStudent;
     RecyclerView rvBerita, rvStudent;
-    TextView whtsnew, studcorner;
+    TextView whtsnew, studcorner, events;
+    Intent in;
 
 
     @Override
@@ -52,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
 
         whtsnew = findViewById(R.id.whatsnew);
         studcorner = findViewById(R.id.studentscorner);
+        events = findViewById(R.id.txtEvent);
 
         rvBerita = findViewById(R.id.rv_berita);
         rvStudent = findViewById(R.id.recyclerView);
@@ -64,6 +66,9 @@ public class MainActivity extends AppCompatActivity {
         adapterberita = new Adapterberita(brtList, this);
         rvBerita.setAdapter(adapterberita);
 
+        in = new Intent(MainActivity.this, NewsWall.class);
+
+        brtList = new ArrayList<>();
         rvStudent.setLayoutManager(new LinearLayoutManager(this, 0, false));
         adapterStudent = new AdapterArtikel(artList, this);
         rvStudent.setAdapter(adapterStudent);
@@ -72,7 +77,8 @@ public class MainActivity extends AppCompatActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        startActivity(new Intent(MainActivity.this, NewsWall.class));
+                        in.putExtra("typ","news");
+                        startActivity(in);
                     }
                 });
 
@@ -80,7 +86,20 @@ public class MainActivity extends AppCompatActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        startActivity(new Intent(MainActivity.this, StudentsCorner.class));
+                        in.putExtra("typ","student");
+
+                        startActivity(in);
+                    }
+                }
+        );
+
+        events.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        in.putExtra("typ", "event");
+
+                        startActivity(in);
                     }
                 }
         );
@@ -209,6 +228,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

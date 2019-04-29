@@ -9,7 +9,7 @@
     <TextView
         android:layout_width="100dp"
         android:layout_height="50dp"
-        android:text="LIFE"
+        android:text=""
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <android.support.v7.widget.RecyclerView

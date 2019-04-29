@@ -13,7 +13,7 @@ public class NewsWall extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news_wall);
-        getSupportActionBar().setTitle("News Wall");
+        getSupportActionBar().setTitle("PORTAL Wall");
 
         //android.support.v7.widget.Toolbar toolbar = findViewById(R.id.toolbar);
         //setSupportActionBar(toolbar);
@@ -21,9 +21,11 @@ public class NewsWall extends AppCompatActivity {
 
         TabLayout tabLayout = findViewById(R.id.tab_layout);
         // Set the text for each tab.
-        tabLayout.addTab(tabLayout.newTab().setText("LATEST"));
-        tabLayout.addTab(tabLayout.newTab().setText("TECHNOLOGY"));
-        tabLayout.addTab(tabLayout.newTab().setText("LIFE"));
+        tabLayout.addTab(tabLayout.newTab().setText("NEWS"));
+        tabLayout.addTab(tabLayout.newTab().setText("STUDENT CORNER"));
+        tabLayout.addTab(tabLayout.newTab().setText("EVENT"));
+
+
 
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
@@ -31,6 +33,13 @@ public class NewsWall extends AppCompatActivity {
         final TabAdapter adapter = new TabAdapter
                 (getSupportFragmentManager(), tabLayout.getTabCount());
         viewPager.setAdapter(adapter);
+
+        if (getIntent()!= null){
+            String cv = getIntent().getStringExtra("typ");
+            if(cv.equals("student")){
+                viewPager.setCurrentItem(1);
+            }
+        }
 
         viewPager.addOnPageChangeListener(new
                 TabLayout.TabLayoutOnPageChangeListener(tabLayout));
