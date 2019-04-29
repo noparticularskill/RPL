@@ -104,7 +104,7 @@ public class CreateArticle extends AppCompatActivity {
                                         mantul = uri.toString();
 
                                         DatabaseReference dbnews = mDatabase.getReference("Article").push();
-                                        Modelberita mb = new Modelberita(dbnews.getKey(),title,mantul,content,author, "Belum Lulus Sensor", System.currentTimeMillis());
+                                        Modelberita mb = new Modelberita(dbnews.getKey(),title,mantul, "Student",content,author, "Belum Lulus Sensor", System.currentTimeMillis());
 
                                         dbnews.setValue(mb).addOnCompleteListener(new OnCompleteListener<Void>() {
                                             @Override
@@ -123,7 +123,7 @@ public class CreateArticle extends AppCompatActivity {
                     });
                 }else{
                     DatabaseReference dbnews = mDatabase.getReference("Article").push();
-                    Modelberita mb = new Modelberita(dbnews.getKey(),title,"",content,author, "Belum Lulus Sensor", System.currentTimeMillis());
+                    Modelberita mb = new Modelberita(dbnews.getKey(),title,"", "Student",content,author, "Belum Lulus Sensor", System.currentTimeMillis());
 
                     dbnews.setValue(mb).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override

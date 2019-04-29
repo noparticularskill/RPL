@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import com.example.android.tel_unewsportal.Model.ModelEvent;
 import com.example.android.tel_unewsportal.Model.Modelberita;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -28,9 +29,11 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     FirebaseUser mUser = FirebaseAuth.getInstance().getCurrentUser();
-    List<Modelberita> mList;
     List<Modelberita> brtList;
-    Adapterberita adapterberita, adapterStudent;
+    List<ModelEvent> evList;
+    List<Modelberita> artList;
+    Adapterberita adapterberita;
+    AdapterArtikel adapterStudent;
     RecyclerView rvBerita, rvStudent;
     TextView whtsnew, studcorner;
 
@@ -50,19 +53,19 @@ public class MainActivity extends AppCompatActivity {
         whtsnew = findViewById(R.id.whatsnew);
         studcorner = findViewById(R.id.studentscorner);
 
-        mList = new ArrayList<>();
         rvBerita = findViewById(R.id.rv_berita);
         rvStudent = findViewById(R.id.recyclerView);
 
+        artList = new ArrayList<>();
+        brtList = new ArrayList<>();
+        evList = new ArrayList<>();
+
         rvBerita.setLayoutManager(new LinearLayoutManager(this));
-        rvBerita.setHasFixedSize(true);
-        adapterberita = new Adapterberita(mList, this);
+        adapterberita = new Adapterberita(brtList, this);
         rvBerita.setAdapter(adapterberita);
 
-        brtList = new ArrayList<>();
         rvStudent.setLayoutManager(new LinearLayoutManager(this, 0, false));
-        rvStudent.setHasFixedSize(true);
-        adapterStudent = new Adapterberita(brtList, this);
+        adapterStudent = new AdapterArtikel(artList, this);
         rvStudent.setAdapter(adapterStudent);
 
         whtsnew.setOnClickListener(
@@ -82,7 +85,13 @@ public class MainActivity extends AppCompatActivity {
                 }
         );
 
-        DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("/Student News");
+        fetchDataNews();
+        fetchDataArticle();
+//        fetctDateEvent();
+    }
+
+    private void fetchDataNews() {
+        DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("/News");
         mDatabase.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
@@ -90,11 +99,89 @@ public class MainActivity extends AppCompatActivity {
                     Modelberita modelberita = dataSnapshot.getValue(Modelberita.class);
                     if (modelberita != null){
                         if (modelberita.mogimogi != null){
-                        if (modelberita.mogimogi.equals("Sudah Lulus Sensor")){
-                            brtList.add(modelberita);
-                            mList.add(modelberita);
-                            adapterberita.notifyDataSetChanged();
-                            adapterStudent.notifyDataSetChanged();
+                            if (modelberita.mogimogi.equals("Sudah Lulus Sensor")){
+                                brtList.add(modelberita);
+                                adapterStudent.notifyDataSetChanged();
+                            }
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    private void fetctDateEvent() {
+        DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("/Event");
+        mDatabase.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                if (dataSnapshot.hasChildren()){
+                    ModelEvent modelberita = dataSnapshot.getValue(ModelEvent.class);
+                    if (modelberita != null){
+                        if (modelberita.mogimogi != null){
+                            if (modelberita.mogimogi.equals("Sudah Lulus Sensor")){
+                                evList.add(modelberita);
+                                adapterberita.notifyDataSetChanged();
+                            }
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    private void fetchDataArticle() {
+        DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("/Article");
+        mDatabase.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                if (dataSnapshot.hasChildren()){
+                    Modelberita modelberita = dataSnapshot.getValue(Modelberita.class);
+                    if (modelberita != null){
+                        if (modelberita.mogimogi != null){
+                            if (modelberita.mogimogi.equals("Sudah Lulus Sensor")){
+                                artList.add(modelberita);
+                                adapterberita.notifyDataSetChanged();
                             }
                         }
                     }

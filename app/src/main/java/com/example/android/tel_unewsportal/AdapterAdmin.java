@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.android.tel_unewsportal.Model.ModelType;
 import com.example.android.tel_unewsportal.Model.Modelberita;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseReference;
@@ -41,38 +42,74 @@ public class AdapterAdmin extends RecyclerView.Adapter<AdapterAdmin.Myviewholder
         myviewholder.tvTitle.setText(modelberitaaa.judul);
         myviewholder.tvAuthor.setText(modelberitaaa.author);
 
-        myviewholder.btnAsep.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Modelberita md = new Modelberita(modelberitaaa.uid, modelberitaaa.judul, modelberitaaa.gambar, modelberitaaa.berita, modelberitaaa.author, "Sudah Lulus Sensor", System.currentTimeMillis());
-                DatabaseReference a = FirebaseDatabase.getInstance().getReference("Student News").child(modelberitaaa.uid);
-                a.setValue(md).addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        Toast.makeText(context, "MANTUL", Toast.LENGTH_SHORT).show();
-                        modelberitaa.remove(i);
-                        notifyItemRemoved(i);
-                        notifyDataSetChanged();
-                    }
-                });
-            }
-        });
-        myviewholder.btnDelina.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Modelberita md = new Modelberita(modelberitaaa.uid, modelberitaaa.judul, modelberitaaa.gambar, modelberitaaa.berita, modelberitaaa.author, "Tidak Lulus Sensor", System.currentTimeMillis());
-                DatabaseReference a = FirebaseDatabase.getInstance().getReference("Student News").child(modelberitaaa.uid);
-                a.setValue(md).addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        Toast.makeText(context, "MANTUL", Toast.LENGTH_SHORT).show();
-                        modelberitaa.remove(i);
-                        notifyItemRemoved(i);
-                        notifyDataSetChanged();
-                    }
-                });
-            }
-        });
+        if (modelberitaaa.tipe.equals("News")){
+            myviewholder.btnAsep.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Modelberita md = new Modelberita(modelberitaaa.uid, modelberitaaa.judul, modelberitaaa.gambar, "News", modelberitaaa.berita, modelberitaaa.author, "Sudah Lulus Sensor", System.currentTimeMillis());
+                    DatabaseReference a = FirebaseDatabase.getInstance().getReference("News").child(modelberitaaa.uid);
+                    a.setValue(md).addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void aVoid) {
+                            Toast.makeText(context, "MANTUL", Toast.LENGTH_SHORT).show();
+                            modelberitaa.remove(i);
+                            notifyItemRemoved(i);
+                            notifyDataSetChanged();
+                        }
+                    });
+                }
+            });
+            myviewholder.btnDelina.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Modelberita md = new Modelberita(modelberitaaa.uid, modelberitaaa.judul, modelberitaaa.gambar, "News", modelberitaaa.berita, modelberitaaa.author, "Tidak Lulus Sensor", System.currentTimeMillis());
+                    DatabaseReference a = FirebaseDatabase.getInstance().getReference("News").child(modelberitaaa.uid);
+                    a.setValue(md).addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void aVoid) {
+                            Toast.makeText(context, "MANTUL", Toast.LENGTH_SHORT).show();
+                            modelberitaa.remove(i);
+                            notifyItemRemoved(i);
+                            notifyDataSetChanged();
+                        }
+                    });
+                }
+            });
+        }else if (modelberitaaa.tipe.equals("Student")){
+            myviewholder.btnAsep.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Modelberita md = new Modelberita(modelberitaaa.uid, modelberitaaa.judul, modelberitaaa.gambar, "Student", modelberitaaa.berita, modelberitaaa.author, "Sudah Lulus Sensor", System.currentTimeMillis());
+                    DatabaseReference a = FirebaseDatabase.getInstance().getReference("Article").child(modelberitaaa.uid);
+                    a.setValue(md).addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void aVoid) {
+                            Toast.makeText(context, "MANTUL", Toast.LENGTH_SHORT).show();
+                            modelberitaa.remove(i);
+                            notifyItemRemoved(i);
+                            notifyDataSetChanged();
+                        }
+                    });
+                }
+            });
+            myviewholder.btnDelina.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Modelberita md = new Modelberita(modelberitaaa.uid, modelberitaaa.judul, modelberitaaa.gambar, "Student", modelberitaaa.berita, modelberitaaa.author, "Tidak Lulus Sensor", System.currentTimeMillis());
+                    DatabaseReference a = FirebaseDatabase.getInstance().getReference("Article").child(modelberitaaa.uid);
+                    a.setValue(md).addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void aVoid) {
+                            Toast.makeText(context, "MANTUL", Toast.LENGTH_SHORT).show();
+                            modelberitaa.remove(i);
+                            notifyItemRemoved(i);
+                            notifyDataSetChanged();
+                        }
+                    });
+                }
+            });
+        }
+
         myviewholder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

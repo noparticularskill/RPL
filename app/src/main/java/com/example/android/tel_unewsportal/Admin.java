@@ -44,8 +44,43 @@ public class Admin extends AppCompatActivity {
     private void setData() {
         modelberitas.clear();
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("Student News");
+        DatabaseReference myRef = database.getReference("News");
+        DatabaseReference ref = database.getReference("Article");
+
         myRef.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                if (dataSnapshot.hasChildren()){
+                    Modelberita modelberita = dataSnapshot.getValue(Modelberita.class);
+                    if (modelberita != null && modelberita.mogimogi.equals("Belum Lulus Sensor")){
+                        modelberitas.add(modelberita);
+                        adapterAdmin.notifyDataSetChanged();
+                    }
+                }
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+        //
+        ref.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
                 if (dataSnapshot.hasChildren()){
