@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
     Adapterberita adapterberita, adapterStudent;
     RecyclerView rvBerita, rvStudent;
     TextView whtsnew, studcorner;
+    Intent in;
 
 
     @Override
@@ -59,6 +60,8 @@ public class MainActivity extends AppCompatActivity {
         adapterberita = new Adapterberita(mList, this);
         rvBerita.setAdapter(adapterberita);
 
+        in = new Intent(MainActivity.this, NewsWall.class);
+
         brtList = new ArrayList<>();
         rvStudent.setLayoutManager(new LinearLayoutManager(this, 0, false));
         rvStudent.setHasFixedSize(true);
@@ -69,7 +72,8 @@ public class MainActivity extends AppCompatActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        startActivity(new Intent(MainActivity.this, NewsWall.class));
+                        in.putExtra("typ","news");
+                        startActivity(in);
                     }
                 });
 
@@ -77,7 +81,9 @@ public class MainActivity extends AppCompatActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        startActivity(new Intent(MainActivity.this, StudentsCorner.class));
+                        in.putExtra("typ","student");
+
+                        startActivity(in);
                     }
                 }
         );
@@ -122,6 +128,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
