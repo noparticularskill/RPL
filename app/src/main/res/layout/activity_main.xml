@@ -28,10 +28,11 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="4dp"
         app:layout_constraintBottom_toTopOf="@+id/studentscorner"
-        app:layout_constraintEnd_toStartOf="@+id/imageView11"
+        app:layout_constraintEnd_toStartOf="@+id/img_event"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/whatsnew" />
+        app:layout_constraintTop_toBottomOf="@+id/whatsnew"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/whatsnew"
@@ -51,11 +52,14 @@
 
 
     <ImageView
-        android:id="@+id/imageView11"
-        android:layout_width="142dp"
-        android:layout_height="241dp"
+        android:id="@+id/img_event"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/studentscorner"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/rv_berita"
@@ -74,8 +78,8 @@
         android:textAlignment="center"
         android:textColor="@android:color/holo_red_dark"
         android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="@+id/imageView11"
-        app:layout_constraintStart_toStartOf="@+id/imageView11"
+        app:layout_constraintEnd_toEndOf="@+id/img_event"
+        app:layout_constraintStart_toStartOf="@+id/img_event"
         app:layout_constraintTop_toBottomOf="@+id/imageView5" />
 
     <android.support.v7.widget.RecyclerView

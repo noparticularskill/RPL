@@ -77,7 +77,7 @@ public class CreateEvent extends AppCompatActivity {
                                         mantul = uri.toString();
 
                                         DatabaseReference dbnews = mDatabase.getReference("Event").push();
-                                        ModelEvent mb = new ModelEvent(dbnews.getKey(),mantul, "Event", "Belum Lulus Sensor", System.currentTimeMillis());
+                                        ModelEvent mb = new ModelEvent(dbnews.getKey(),mantul, "Event", "Sudah Lulus Sensor", System.currentTimeMillis());
 
                                         dbnews.setValue(mb).addOnCompleteListener(new OnCompleteListener<Void>() {
                                             @Override

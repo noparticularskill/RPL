@@ -39,6 +39,9 @@ public class NewsWall extends AppCompatActivity {
             if(cv.equals("student")){
                 viewPager.setCurrentItem(1);
             }
+            if (cv.equals("event")){
+                viewPager.setCurrentItem(2);
+            }
         }
 
         viewPager.addOnPageChangeListener(new

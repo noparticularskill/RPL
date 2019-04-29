@@ -11,7 +11,9 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.android.tel_unewsportal.Model.ModelEvent;
 import com.example.android.tel_unewsportal.Model.Modelberita;
@@ -22,6 +24,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
     AdapterArtikel adapterStudent;
     RecyclerView rvBerita, rvStudent;
     TextView whtsnew, studcorner, events;
+    ImageView imgEvent;
     Intent in;
 
 
@@ -54,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
         whtsnew = findViewById(R.id.whatsnew);
         studcorner = findViewById(R.id.studentscorner);
         events = findViewById(R.id.txtEvent);
+        imgEvent = findViewById(R.id.img_event);
 
         rvBerita = findViewById(R.id.rv_berita);
         rvStudent = findViewById(R.id.recyclerView);
@@ -68,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
 
         in = new Intent(MainActivity.this, NewsWall.class);
 
-        rvStudent.setLayoutManager(new LinearLayoutManager(this, 0, false));
+        rvStudent.setLayoutManager(new LinearLayoutManager(this, 0, true));
         adapterStudent = new AdapterArtikel(artList, this);
         rvStudent.setAdapter(adapterStudent);
 
@@ -102,10 +107,17 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
         );
+        
+        imgEvent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(MainActivity.this, "anj", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         fetchDataNews();
         fetchDataArticle();
-//        fetctDateEvent();
+        fetctDateEvent();
     }
 
     private void fetchDataNews() {
@@ -157,10 +169,11 @@ public class MainActivity extends AppCompatActivity {
                     ModelEvent modelberita = dataSnapshot.getValue(ModelEvent.class);
                     if (modelberita != null){
                         if (modelberita.mogimogi != null){
-                            if (modelberita.mogimogi.equals("Sudah Lulus Sensor")){
-                                evList.add(modelberita);
-                                adapterberita.notifyDataSetChanged();
-                            }
+
+                                if (!modelberita.gambar.isEmpty()) {
+                                    Picasso.get().load(modelberita.gambar).into(imgEvent);
+                                }
+
                         }
                     }
                 }

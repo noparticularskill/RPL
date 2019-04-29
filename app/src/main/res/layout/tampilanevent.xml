@@ -6,42 +6,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/txtEvent"
-        android:layout_width="115dp"
-        android:layout_height="38dp"
-        android:layout_marginStart="136dp"
-        android:layout_marginTop="38dp"
-        android:layout_marginEnd="139dp"
-        android:text="Event on Campus"
-        android:textColor="@android:color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <ImageView
         android:id="@+id/imgevent"
-        android:layout_width="234dp"
-        android:layout_height="278dp"
-        android:layout_marginStart="75dp"
-        android:layout_marginTop="18dp"
-        android:layout_marginEnd="75dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.481"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtEvent"
+        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/poster1" />
-
-    <Button
-        android:id="@+id/btnJoin"
-        android:layout_width="228dp"
-        android:layout_height="37dp"
-        android:layout_marginStart="147dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="176dp"
-        android:text="JOIN"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.398"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgevent" />
 
 </android.support.constraint.ConstraintLayout>
