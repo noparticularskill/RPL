@@ -31,7 +31,7 @@ public class CreateEvent extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_create_article);
+        setContentView(R.layout.activity_create_event);
         getSupportActionBar().hide();
 
         mbtnPostEvent = findViewById(R.id.btnPostE);
@@ -53,7 +53,28 @@ public class CreateEvent extends AppCompatActivity {
         });
 
 
-        }
 
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        if (requestCode == REQUEST_GET_SINGLE_FILE && resultCode == RESULT_OK){
+            if (data != null){
+                Uri uri = data.getData();
+                try {
+                    Bitmap imageBitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), uri);
+                    getImgEvent.setImageBitmap(imageBitmap);
+                    ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                    imageBitmap.compress(Bitmap.CompressFormat.JPEG, 90, baos);
+                    bit = baos.toByteArray();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+
+            }
         }
+    }
+
+}
 

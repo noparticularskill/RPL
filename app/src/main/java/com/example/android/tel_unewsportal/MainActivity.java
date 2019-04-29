@@ -149,7 +149,7 @@ public class MainActivity extends AppCompatActivity {
             case R.id.berita:
                 startActivity(new Intent(this, CreateArticle.class));
                 return true;
-            case R.id.Event:
+            case R.id.event:
                 startActivity(new Intent(this, CreateEvent.class));
                 return true;
             case R.id.logout_registerr:
