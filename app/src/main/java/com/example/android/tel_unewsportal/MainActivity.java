@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
     List<Modelberita> brtList;
     Adapterberita adapterberita, adapterStudent;
     RecyclerView rvBerita, rvStudent;
-    TextView whtsnew, studcorner;
+    TextView whtsnew, studcorner, events;
     Intent in;
 
 
@@ -50,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
 
         whtsnew = findViewById(R.id.whatsnew);
         studcorner = findViewById(R.id.studentscorner);
+        events = findViewById(R.id.txtEvent);
 
         mList = new ArrayList<>();
         rvBerita = findViewById(R.id.rv_berita);
@@ -82,6 +83,17 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         in.putExtra("typ","student");
+
+                        startActivity(in);
+                    }
+                }
+        );
+
+        events.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        in.putExtra("typ", "event");
 
                         startActivity(in);
                     }

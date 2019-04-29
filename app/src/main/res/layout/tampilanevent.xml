@@ -31,29 +31,17 @@
         app:layout_constraintTop_toBottomOf="@+id/txtEvent"
         app:srcCompat="@drawable/poster1" />
 
-    <TextView
-        android:id="@+id/txtJoin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="153dp"
+    <Button
+        android:id="@+id/btnJoin"
+        android:layout_width="228dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="147dp"
         android:layout_marginTop="12dp"
-        android:layout_marginEnd="153dp"
-        android:text="JOIN EVENT"
+        android:layout_marginEnd="176dp"
+        android:text="JOIN"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.398"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imgevent" />
-
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="147dp"
-        android:layout_marginTop="38dp"
-        android:layout_marginEnd="176dp"
-        android:text="Button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtJoin" />
 
 </android.support.constraint.ConstraintLayout>
