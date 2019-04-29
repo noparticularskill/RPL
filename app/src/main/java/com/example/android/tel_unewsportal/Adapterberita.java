@@ -36,7 +36,12 @@ public class Adapterberita extends RecyclerView.Adapter<Adapterberita.Myviewhold
         final Modelberita modelberitaaa = modelberitaa.get(i);
         myviewholder.tampilanevent.setText(modelberitaaa.judul);
         myviewholder.berita.setText(modelberitaaa.berita);
-        Picasso.get().load(modelberitaaa.gambar).into(myviewholder.gambar);
+
+        if (!modelberitaaa.gambar.isEmpty()){
+            Picasso.get().load(modelberitaaa.gambar).into(myviewholder.gambar);
+        }
+
+
         myviewholder.mcons1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

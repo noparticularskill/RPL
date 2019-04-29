@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.android.tel_unewsportal.Model.ModelEvent;
 import com.example.android.tel_unewsportal.Model.Modelberita;
 import com.squareup.picasso.Picasso;
 
@@ -18,10 +19,10 @@ import java.util.List;
 
 public class AdapterRV extends RecyclerView.Adapter <AdapterRV.MyViewOlder> {
 
-    List<Modelberita> mList;
+    List<ModelEvent> mList;
     Context context;
 
-    public AdapterRV(List<Modelberita> mList, Context context) {
+    public AdapterRV(List<ModelEvent> mList, Context context) {
         this.mList = mList;
         this.context = context;
     }
@@ -29,22 +30,17 @@ public class AdapterRV extends RecyclerView.Adapter <AdapterRV.MyViewOlder> {
     @NonNull
     @Override
     public MyViewOlder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        return new MyViewOlder(LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.tampilanberita, viewGroup, false));
+        return new MyViewOlder(LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.tampilanevent, viewGroup, false));
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyViewOlder myViewOlder, int i) {
-        final Modelberita item = mList.get(i);
-        myViewOlder.tampilanevent.setText(item.judul);
-        myViewOlder.berita.setText(item.berita);
+        final ModelEvent item = mList.get(i);
         Picasso.get().load(item.gambar).into(myViewOlder.gambar);
         myViewOlder.mcons1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent sc = new Intent(context, DetailStudentCorner.class);
-                sc.putExtra("julid", item.judul);
-                sc.putExtra("aufar", item.author);
-                sc.putExtra("hoax", item.berita);
                 sc.putExtra("ambar", item.gambar);
                 sc.putExtra("anggal", item.mogumogu);
                 context.startActivity(sc);
@@ -59,16 +55,12 @@ public class AdapterRV extends RecyclerView.Adapter <AdapterRV.MyViewOlder> {
 
     public class MyViewOlder extends RecyclerView.ViewHolder {
 
-        TextView tampilanevent;
         ImageView gambar;
-        TextView berita;
         ConstraintLayout mcons1;
         public MyViewOlder(@NonNull View itemView) {
             super(itemView);
-            tampilanevent = itemView.findViewById(R.id.textView6);
-            gambar = itemView.findViewById(R.id.imageView2);
-            berita = itemView.findViewById(R.id.textView5);
-            mcons1 = itemView.findViewById(R.id.cons1);
+            gambar = itemView.findViewById(R.id.imgevent);
+            mcons1 = itemView.findViewById(R.id.event);
         }
     }
 }

@@ -58,7 +58,7 @@ public class TabLatest extends Fragment {
         adapterberita = new Adapterberita(mList, getActivity());
         rvBerita.setAdapter(adapterberita);
 
-        DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("/Student News");
+        DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("/News");
         mDatabase.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
