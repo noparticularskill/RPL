@@ -1,10 +1,13 @@
 package com.example.android.tel_unewsportal;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatDelegate;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
@@ -12,6 +15,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import com.example.android.tel_unewsportal.Model.Modelberita;
+import com.example.android.tel_unewsportal.Model.SettingActivity;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -23,12 +27,25 @@ import java.util.List;
 
 public class Admin extends AppCompatActivity {
 
+    final String PREF_NIGHT_MODE = "NightMode";
+    SharedPreferences spNight;
+
     AdapterAdmin adapterAdmin;
     RecyclerView recyclerView;
     List<Modelberita> modelberitas;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        spNight = getSharedPreferences(PREF_NIGHT_MODE , Context.MODE_PRIVATE);
+        if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES){
+            setTheme(R.style.DarkTheme);
+        }else{
+            setTheme(R.style.AppTheme);
+
+            if(spNight.getBoolean(PREF_NIGHT_MODE,false)){
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+            }
+        }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin);
 
@@ -131,6 +148,11 @@ public class Admin extends AppCompatActivity {
         switch (item.getItemId()){
             case R.id.menu_logout:
                 startActivity(newtask);
+                break;
+            case R.id.menu_setting:
+                Intent intent = new Intent(Admin.this, SettingActivity.class);
+                startActivity(intent);
+                finish();
                 break;
         }
         return super.onOptionsItemSelected(item);

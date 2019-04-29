@@ -9,23 +9,23 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".Model.SettingActivity" />
         <activity android:name=".CreateArticle"></activity>
         <activity android:name=".CreateEvent" />
         <activity android:name=".Admin" />
         <activity android:name=".DetailNews" />
         <activity android:name=".DetailStudentCorner" />
         <activity android:name=".NewsWall" />
-        <activity android:name=".StudentsCorner" />
         <activity android:name=".CreateNews" />
         <activity android:name=".Register" />
         <activity android:name=".MainActivity" />
         <activity android:name=".Splash" />
         <activity
             android:name=".AboutUs"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoAction" />
         <activity
             android:name=".splashscreen"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.NoAction">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
