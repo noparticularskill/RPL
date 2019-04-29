@@ -68,7 +68,6 @@ public class MainActivity extends AppCompatActivity {
 
         in = new Intent(MainActivity.this, NewsWall.class);
 
-        brtList = new ArrayList<>();
         rvStudent.setLayoutManager(new LinearLayoutManager(this, 0, false));
         adapterStudent = new AdapterArtikel(artList, this);
         rvStudent.setAdapter(adapterStudent);
@@ -120,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
                         if (modelberita.mogimogi != null){
                             if (modelberita.mogimogi.equals("Sudah Lulus Sensor")){
                                 brtList.add(modelberita);
-                                adapterStudent.notifyDataSetChanged();
+                                adapterberita.notifyDataSetChanged();
                             }
                         }
                     }
@@ -200,7 +199,7 @@ public class MainActivity extends AppCompatActivity {
                         if (modelberita.mogimogi != null){
                             if (modelberita.mogimogi.equals("Sudah Lulus Sensor")){
                                 artList.add(modelberita);
-                                adapterberita.notifyDataSetChanged();
+                                adapterStudent.notifyDataSetChanged();
                             }
                         }
                     }
