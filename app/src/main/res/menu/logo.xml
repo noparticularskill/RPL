@@ -12,7 +12,7 @@
         android:icon="@drawable/ic_edit_black_24dp"
         app:showAsAction="never" />
 
-    <item android:id="@+id/Event"
+    <item android:id="@+id/event"
         android:title="Create Event"
         android:icon="@drawable/ic_edit_black_24dp"
         app:showAsAction="never" />
